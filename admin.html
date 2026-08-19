@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>پنل مدیریت و پشتیبانی | MP STORE</title>
+  
+  <!-- Google Fonts: Vazirmatn & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js for Analytics Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#959bff",
+            "surface-container-low": "#1b1b22",
+            "on-secondary": "#00325a",
+            "surface-container": "#1f1f27",
+            "outline-variant": "#464654",
+            "inverse-primary": "#494fca",
+            "on-background": "#e4e1ec",
+            "secondary-container": "#2794f4",
+            "tertiary": "#e1b6ff",
+            "surface-container-lowest": "#0d0e15",
+            "surface-container-high": "#292931",
+            "outline": "#908f9f",
+            "primary": "#bfc1ff",
+            "surface": "#13131a",
+            "secondary": "#a0c9ff",
+            "error": "#ffb4ab",
+            "on-surface": "#e4e1ec",
+            "background": "#13131a",
+            "on-surface-variant": "#c6c5d6"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem"
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md relative overflow-x-hidden bg-grid-pattern">
+
+  <!-- Password Security Login Modal -->
+  <div id="admin-login-modal" class="fixed inset-0 z-[200] bg-background/95 backdrop-blur-2xl flex items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-md rounded-3xl p-8 border border-secondary/40 shadow-[0_0_50px_rgba(39,148,244,0.25)] text-center space-y-6">
+      
+      <div class="w-16 h-16 rounded-full bg-secondary/10 border border-secondary/40 flex items-center justify-center mx-auto text-secondary shadow-[0_0_20px_rgba(39,148,244,0.4)]">
+        <span class="material-symbols-outlined text-3xl">lock</span>
+      </div>
+
+      <div class="space-y-2">
+        <h2 class="text-2xl font-black text-on-background">ورود به پنل مدیریت</h2>
+        <p class="text-xs text-on-surface-variant">برای دسترسی به هسته مدیریت، آمار و پاسخگویی به تیکت‌ها گذرواژه را وارد کنید.</p>
+      </div>
+
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div class="relative">
+          <input 
+            type="password" 
+            id="admin-password-input" 
+            placeholder="رمز عبور امنیتی..." 
+            class="w-full bg-surface-container-high border border-outline-variant/40 rounded-xl py-3 px-4 text-center text-on-surface tracking-widest focus:outline-none focus:border-secondary transition-all" 
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <div id="login-error-msg" class="hidden text-xs text-error font-medium">
+          رمز عبور نادرست است. لطفاً دوباره تلاش فرمایید.
+        </div>
+
+        <button type="submit" class="w-full btn-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(39,148,244,0.5)]">
+          <span class="material-symbols-outlined">key</span>
+          <span>احراز هویت و ورود</span>
+        </button>
+      </form>
+
+      <div class="pt-4 border-t border-white/5 flex justify-between items-center text-xs text-on-surface-variant">
+        <a href="index.html" class="hover:text-secondary flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          <span>بازگشت به سایت اصلی</span>
+        </a>
+        <span class="text-[11px] text-outline">MP STORE Security Core v2.4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Main Command Layout -->
+  <div id="admin-dashboard-container" class="hidden min-h-screen flex flex-col md:flex-row w-full">
+    
+    <!-- Admin Sidebar -->
+    <aside class="w-full md:w-64 bg-surface-container-low border-b md:border-b-0 md:border-l border-white/10 p-6 flex flex-col justify-between shrink-0">
+      <div class="space-y-8">
+        <!-- Brand & Avatar -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-secondary to-primary shadow-[0_0_15px_rgba(39,148,244,0.4)]">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="Admin Avatar" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <div>
+            <h3 class="font-bold text-sm text-on-surface">مدیر ارشد فروشگاه</h3>
+            <span class="text-[11px] text-secondary font-medium">MP STORE Admin</span>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="space-y-1 text-sm font-medium">
+          <a href="#overview-section" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary/15 text-secondary font-bold">
+            <span class="material-symbols-outlined text-xl">dashboard</span>
+            <span>داشبورد اصلی</span>
+          </a>
+          <a href="#tickets-section" class="flex items-center justify-between px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-xl text-secondary">support_agent</span>
+              <span>تیکت‌های پشتیبانی</span>
+            </div>
+            <span id="sidebar-tickets-badge" class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">۲ جدید</span>
+          </a>
+          <a href="#analytics-section" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors">
+            <span class="material-symbols-outlined text-xl text-tertiary">analytics</span>
+            <span>آمار بازدید وب‌سایت</span>
+          </a>
+          <a href="#products-table-section" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors">
+            <span class="material-symbols-outlined text-xl">inventory_2</span>
+            <span>مدیریت محصولات</span>
+          </a>
+          <a href="https://t.me/Mpstore1388bot" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors">
+            <span class="material-symbols-outlined text-xl text-secondary">smart_toy</span>
+            <span>ربات تلگرام</span>
+          </a>
+          <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors">
+            <span class="material-symbols-outlined text-xl">storefront</span>
+            <span>مشاهده فروشگاه</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Logout -->
+      <div class="pt-6 border-t border-white/10">
+        <button onclick="handleAdminLogout()" class="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-error hover:bg-error/10 transition-colors text-sm font-bold">
+          <span class="material-symbols-outlined text-lg">logout</span>
+          <span>خروج از حساب</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Admin Content Area -->
+    <main class="flex-1 p-6 md:p-10 space-y-10 overflow-y-auto">
+      
+      <!-- Top Action Bar -->
+      <div id="overview-section" class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-white/10">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-black text-on-background">مرکز کنترل، آمار و پشتیبانی</h1>
+          <p class="text-xs text-on-surface-variant mt-1">مدیریت محصولات، پاسخگویی آنی به تیکت‌ها و تحلیل ترافیک</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="openAddProductModal()" class="btn-primary px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(39,148,244,0.4)]">
+            <span class="material-symbols-outlined text-lg">add</span>
+            <span>افزودن محصول جدید</span>
+          </button>
+          <a href="contact.html" target="_blank" class="btn-secondary px-4 py-2.5 rounded-xl font-medium text-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-base">support_agent</span>
+            <span>صفحه ثبت تیکت</span>
+          </a>
+          <a href="index.html" class="btn-secondary px-4 py-2.5 rounded-xl font-medium text-sm flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">visibility</span>
+            <span>سایت اصلی</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Live Stats Overview Cards (Screen 4) -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-panel p-5 rounded-2xl border border-secondary/30 space-y-2">
+          <div class="flex justify-between items-center text-on-surface-variant">
+            <span class="text-xs">کل محصولات فعال</span>
+            <span class="material-symbols-outlined text-secondary">inventory</span>
+          </div>
+          <div id="stat-products-count" class="text-2xl font-black text-secondary">--</div>
+          <div class="text-[11px] text-emerald-400 font-medium">همگام با دیتابیس لوکال</div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-amber-500/30 space-y-2">
+          <div class="flex justify-between items-center text-on-surface-variant">
+            <span class="text-xs">تیکت‌های در انتظار بررسی</span>
+            <span class="material-symbols-outlined text-amber-400">mark_email_unread</span>
+          </div>
+          <div id="stat-pending-tickets-count" class="text-2xl font-black text-amber-400">۲ <span class="text-xs font-normal">تیکت</span></div>
+          <div class="text-[11px] text-amber-300 font-medium">نیاز به پاسخ فوری پشتیبان</div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-primary/30 space-y-2">
+          <div class="flex justify-between items-center text-on-surface-variant">
+            <span class="text-xs">بازدیدهای امروز وب‌سایت</span>
+            <span class="material-symbols-outlined text-primary">visibility</span>
+          </div>
+          <div id="stat-today-views" class="text-2xl font-black text-primary">۳,۸۴۲</div>
+          <div class="text-[11px] text-emerald-400 font-medium">+۲۲٪ رشد نسبت به دیروز</div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2">
+          <div class="flex justify-between items-center text-on-surface-variant">
+            <span class="text-xs">فروش کل تخمینی</span>
+            <span class="material-symbols-outlined text-on-surface">payments</span>
+          </div>
+          <div class="text-2xl font-black text-on-surface">۱۴,۸۵۰,۰۰۰ <span class="text-xs font-normal">تومان</span></div>
+          <div class="text-[11px] text-secondary font-medium">سودآوری پایدار</div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- SUPPORT TICKETS MANAGEMENT SECTION (NEW)      -->
+      <!-- ============================================== -->
+      <section id="tickets-section" class="glass-panel rounded-3xl p-6 sm:p-8 border border-secondary/30 space-y-6">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-white/10">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-2xl">support_agent</span>
+              <h2 class="text-xl font-bold text-on-surface">مدیریت و پاسخ‌دهی به تیکت‌های کاربران</h2>
+            </div>
+            <p class="text-xs text-on-surface-variant">مشاهده پیام‌های کاربران، ارسال پاسخ رسمی پشتیبانی و تغییر وضعیت تیکت</p>
+          </div>
+
+          <!-- Status Filters -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="filterTicketsByStatus('all', this)" class="ticket-filter-btn px-3 py-1.5 rounded-xl bg-secondary text-surface-container-lowest font-bold text-xs transition-all">همه (<span id="count-all-tickets">۳</span>)</button>
+            <button onclick="filterTicketsByStatus('pending', this)" class="ticket-filter-btn px-3 py-1.5 rounded-xl bg-surface-container-high text-amber-300 font-medium text-xs hover:bg-white/10 transition-all">در انتظار (<span id="count-pending-tickets">۲</span>)</button>
+            <button onclick="filterTicketsByStatus('answered', this)" class="ticket-filter-btn px-3 py-1.5 rounded-xl bg-surface-container-high text-emerald-300 font-medium text-xs hover:bg-white/10 transition-all">پاسخ داده شده (<span id="count-answered-tickets">۱</span>)</button>
+            <button onclick="filterTicketsByStatus('closed', this)" class="ticket-filter-btn px-3 py-1.5 rounded-xl bg-surface-container-high text-outline font-medium text-xs hover:bg-white/10 transition-all">بسته شده (<span id="count-closed-tickets">۰</span>)</button>
+          </div>
+        </div>
+
+        <!-- Search input for tickets -->
+        <div class="flex justify-between items-center gap-4">
+          <div class="relative w-full sm:w-80">
+            <input 
+              type="text" 
+              id="ticket-search-input" 
+              placeholder="جستجو در کد رهگیری، نام یا متن..." 
+              class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 pr-9 pl-3 text-xs text-on-surface focus:outline-none focus:border-secondary"
+              oninput="renderTicketsTable()"
+            />
+            <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+          </div>
+        </div>
+
+        <!-- Tickets Table Container -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-right text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-white/10 text-on-surface-variant text-xs">
+                <th class="pb-3 pr-2">کد رهگیری</th>
+                <th class="pb-3">کاربر و تماس</th>
+                <th class="pb-3">موضوع تیکت</th>
+                <th class="pb-3">بخش</th>
+                <th class="pb-3">اولویت</th>
+                <th class="pb-3">تاریخ ثبت</th>
+                <th class="pb-3">وضعیت</th>
+                <th class="pb-3 pl-2 text-center">عملیات</th>
+              </tr>
+            </thead>
+            <tbody id="tickets-table-body" class="divide-y divide-white/5">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- WEBSITE VISITOR ANALYTICS SECTION             -->
+      <!-- ============================================== -->
+      <section id="analytics-section" class="glass-panel rounded-3xl p-6 sm:p-8 border border-tertiary/30 space-y-8">
+        
+        <!-- Analytics Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-white/10">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-tertiary text-2xl">monitoring</span>
+              <h2 class="text-xl font-bold text-on-surface">آمار و تحلیل بازدید وب‌سایت (Traffic Analytics)</h2>
+            </div>
+            <p class="text-xs text-on-surface-variant">گزارش لحظه‌ای بازدیدکنندگان، رفتار کاربران و منابع ورودی</p>
+          </div>
+
+          <!-- Live Online Badge & Range Filter -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="live-online-users">۲۴ کاربر آنلاین هم‌اکنون</span>
+            </div>
+
+            <div class="inline-flex rounded-xl bg-surface-container-high p-1 border border-white/10 text-xs">
+              <button onclick="updateChartTimeframe('7d', this)" class="px-3 py-1 rounded-lg bg-secondary text-surface-container-lowest font-bold transition-all">۷ روز گذشته</button>
+              <button onclick="updateChartTimeframe('30d', this)" class="px-3 py-1 rounded-lg text-on-surface-variant hover:text-on-surface transition-all">۳۰ روز گذشته</button>
+              <button onclick="updateChartTimeframe('today', this)" class="px-3 py-1 rounded-lg text-on-surface-variant hover:text-on-surface transition-all">امروز</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Visitor Metric Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <div class="p-4 rounded-2xl bg-surface-container/60 border border-white/10 space-y-2">
+            <div class="flex justify-between items-center text-on-surface-variant text-xs">
+              <span>کل بازدیدهای امروز</span>
+              <span class="material-symbols-outlined text-secondary text-lg">visibility</span>
+            </div>
+            <div id="analytics-today-views" class="text-2xl font-black text-secondary">۳,۸۴۲</div>
+            <div class="flex items-center gap-1 text-[11px] text-emerald-400">
+              <span class="material-symbols-outlined text-xs">arrow_upward</span>
+              <span>+۲۲.۴٪ نسبت به دیروز</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-container/60 border border-white/10 space-y-2">
+            <div class="flex justify-between items-center text-on-surface-variant text-xs">
+              <span>بازدیدکنندگان یکتا (IP)</span>
+              <span class="material-symbols-outlined text-tertiary text-lg">group</span>
+            </div>
+            <div id="analytics-unique-visitors" class="text-2xl font-black text-tertiary">۱,۴۹۰</div>
+            <div class="flex items-center gap-1 text-[11px] text-emerald-400">
+              <span class="material-symbols-outlined text-xs">arrow_upward</span>
+              <span>+۱۵.۱٪ رشد هفتگی</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-container/60 border border-white/10 space-y-2">
+            <div class="flex justify-between items-center text-on-surface-variant text-xs">
+              <span>میانگین زمان در سایت</span>
+              <span class="material-symbols-outlined text-primary text-lg">timer</span>
+            </div>
+            <div id="analytics-avg-time" class="text-2xl font-black text-primary">۴:۲۵ <span class="text-xs font-normal">دقیقه</span></div>
+            <div class="text-[11px] text-on-surface-variant">نرخ ماندگاری بسیار بالا</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-container/60 border border-white/10 space-y-2">
+            <div class="flex justify-between items-center text-on-surface-variant text-xs">
+              <span>نرخ پرش (Bounce Rate)</span>
+              <span class="material-symbols-outlined text-emerald-400 text-lg">trending_down</span>
+            </div>
+            <div id="analytics-bounce-rate" class="text-2xl font-black text-emerald-400">۲۳.۴٪</div>
+            <div class="text-[11px] text-emerald-400">بهینه و بسیار ایده‌آل</div>
+          </div>
+
+        </div>
+
+        <!-- Visitor Trend Chart Canvas -->
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-white/10 space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+            <h3 class="font-bold text-sm text-on-surface flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-secondary"></span>
+              نمودار روند ترافیک و مقایسه بازدید کل با کاربران یکتا
+            </h3>
+            <div class="flex items-center gap-4 text-xs">
+              <span class="flex items-center gap-1.5 text-secondary">
+                <span class="w-3 h-3 rounded-full bg-secondary"></span>
+                بازدید کل (Page Views)
+              </span>
+              <span class="flex items-center gap-1.5 text-tertiary">
+                <span class="w-3 h-3 rounded-full bg-tertiary"></span>
+                کاربران یکتا (Unique)
+              </span>
+            </div>
+          </div>
+
+          <div class="w-full h-64 sm:h-80 relative">
+            <canvas id="trafficChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 2-Column Analytics Details: Traffic Sources & Top Pages -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Traffic Sources -->
+          <div class="lg:col-span-6 p-5 rounded-2xl bg-surface-container-low border border-white/10 space-y-4">
+            <h3 class="font-bold text-sm text-on-surface flex items-center justify-between">
+              <span>منابع ورودی کاربران (Referral Sources)</span>
+              <span class="text-xs text-secondary font-mono">Top Channels</span>
+            </h3>
+
+            <div class="space-y-3 text-xs">
+              <div class="space-y-1">
+                <div class="flex justify-between text-on-surface font-medium">
+                  <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-secondary text-sm">smart_toy</span>
+                    ربات و کانال تلگرام MP STORE
+                  </span>
+                  <span class="text-secondary font-bold">۵۸٪</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+                  <div class="h-full rounded-full bg-secondary" style="width: 58%;"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex justify-between text-on-surface font-medium">
+                  <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-sm">search</span>
+                    جستجوی ارگانیک گوگل (SEO)
+                  </span>
+                  <span class="text-primary font-bold">۲۴٪</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+                  <div class="h-full rounded-full bg-primary" style="width: 24%;"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex justify-between text-on-surface font-medium">
+                  <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-tertiary text-sm">share</span>
+                    شبکه‌های اجتماعی و لینک مستقیم
+                  </span>
+                  <span class="text-tertiary font-bold">۱۲٪</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+                  <div class="h-full rounded-full bg-tertiary" style="width: 12%;"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex justify-between text-on-surface font-medium">
+                  <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-outline text-sm">link</span>
+                    سایر وب‌سایت‌های ارجاع‌دهنده
+                  </span>
+                  <span class="text-outline font-bold">۶٪</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+                  <div class="h-full rounded-full bg-outline" style="width: 6%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Devices & Top Visited Pages -->
+          <div class="lg:col-span-6 p-5 rounded-2xl bg-surface-container-low border border-white/10 space-y-4">
+            <h3 class="font-bold text-sm text-on-surface flex items-center justify-between">
+              <span>پربازدیدترین صفحات و محصولات</span>
+              <span class="text-xs text-tertiary font-mono">Popular Pages</span>
+            </h3>
+
+            <div class="space-y-2.5 text-xs">
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center gap-2 truncate max-w-[240px]">
+                  <span class="w-5 h-5 rounded-md bg-secondary/20 text-secondary text-xs flex items-center justify-center font-bold">۱</span>
+                  <span class="truncate text-on-surface font-medium">صفحه اصلی فروشگاه (خانه)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-secondary font-bold">۱,۸۴۰ بازدید</span>
+                  <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">+۱۸٪</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center gap-2 truncate max-w-[240px]">
+                  <span class="w-5 h-5 rounded-md bg-tertiary/20 text-tertiary text-xs flex items-center justify-center font-bold">۲</span>
+                  <span class="truncate text-on-surface font-medium">کاتالوگ و لیست محصولات</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-tertiary font-bold">۱,۲۱۰ بازدید</span>
+                  <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">+۱۲٪</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center gap-2 truncate max-w-[240px]">
+                  <span class="w-5 h-5 rounded-md bg-primary/20 text-primary text-xs flex items-center justify-center font-bold">۳</span>
+                  <span class="truncate text-on-surface font-medium">پکیج پرامپت حرفه‌ای Midjourney</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-primary font-bold">۸۹۰ بازدید</span>
+                  <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">+۲۵٪</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white/5">
+                <div class="flex items-center gap-2 truncate max-w-[240px]">
+                  <span class="w-5 h-5 rounded-md bg-white/10 text-on-surface text-xs flex items-center justify-center font-bold">۴</span>
+                  <span class="truncate text-on-surface font-medium">دستیار هوش مصنوعی تجاری</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="text-on-surface font-bold">۶۴۰ بازدید</span>
+                  <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">+۹٪</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Products Management Table (Screen 4) -->
+      <section id="products-table-section" class="glass-panel rounded-3xl p-6 border border-white/10 space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h2 class="text-lg font-bold text-on-surface">لیست و وضعیت محصولات فروشگاه</h2>
+            <p class="text-xs text-on-surface-variant">ویرایش قیمت، موجودی یا حذف محصولات با یک کلیک</p>
+          </div>
+          <div class="relative w-full sm:w-64">
+            <input 
+              type="text" 
+              id="admin-search-input" 
+              placeholder="جستجو در لیست محصولات..." 
+              class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2 pr-9 pl-3 text-xs text-on-surface focus:outline-none focus:border-secondary"
+              oninput="renderAdminTable()"
+            />
+            <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-base">search</span>
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-right text-sm">
+            <thead>
+              <tr class="border-b border-white/10 text-on-surface-variant text-xs">
+                <th class="pb-3 pr-2">تصویر</th>
+                <th class="pb-3">نام محصول</th>
+                <th class="pb-3">دسته‌بندی</th>
+                <th class="pb-3">نوع</th>
+                <th class="pb-3">قیمت</th>
+                <th class="pb-3">وضعیت</th>
+                <th class="pb-3 pl-2 text-center">عملیات</th>
+              </tr>
+            </thead>
+            <tbody id="admin-table-body" class="divide-y divide-white/5">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Ticket Detail & Reply Modal -->
+  <div id="ticket-reply-modal" class="fixed inset-0 z-[300] bg-background/90 backdrop-blur-2xl hidden items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-secondary/40 shadow-2xl max-h-[92vh] overflow-y-auto space-y-6">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-full bg-secondary/20 text-secondary flex items-center justify-center">
+            <span class="material-symbols-outlined text-lg">support_agent</span>
+          </span>
+          <div>
+            <h3 class="font-bold text-base text-on-surface">پاسخ‌دهی به تیکت <span id="modal-ticket-code" class="text-secondary font-mono">MP-XXXX</span></h3>
+            <span id="modal-ticket-user" class="text-xs text-on-surface-variant">کاربر: --</span>
+          </div>
+        </div>
+        <button onclick="closeTicketReplyModal()" class="text-on-surface-variant hover:text-white">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Ticket Details Card -->
+      <div class="p-4 rounded-2xl bg-surface-container space-y-3 text-xs sm:text-sm">
+        <div class="flex flex-wrap justify-between items-center gap-2 text-xs text-on-surface-variant pb-2 border-b border-white/5">
+          <div>بخش: <span id="modal-ticket-dept" class="text-on-surface font-medium">--</span></div>
+          <div>اولویت: <span id="modal-ticket-priority" class="text-amber-400 font-bold">--</span></div>
+          <div>تاریخ: <span id="modal-ticket-date" class="font-mono text-outline">--</span></div>
+          <div>تماس/تلگرام: <span id="modal-ticket-contact" class="font-mono text-secondary font-bold">--</span></div>
+        </div>
+
+        <div>
+          <span class="text-xs text-on-surface-variant block mb-1">موضوع تیکت:</span>
+          <h4 id="modal-ticket-subject" class="font-bold text-on-surface text-sm sm:text-base">--</h4>
+        </div>
+
+        <div class="p-3 rounded-xl bg-surface-container-high border border-white/5">
+          <span class="text-xs text-on-surface-variant block mb-1">متن پیام کاربر:</span>
+          <p id="modal-ticket-message" class="text-xs sm:text-sm text-on-surface leading-relaxed whitespace-pre-line">--</p>
+        </div>
+      </div>
+
+      <!-- Past Replies Thread -->
+      <div id="modal-replies-list" class="space-y-3">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Reply Input Form -->
+      <form onsubmit="handleSendAdminReply(event)" class="space-y-4 text-xs sm:text-sm pt-2 border-t border-white/10">
+        <input type="hidden" id="reply-ticket-id" />
+
+        <div>
+          <label class="block text-on-surface-variant mb-1 font-medium">متن پاسخ رسمی پشتیبان:</label>
+          <textarea 
+            id="reply-text-input" 
+            required 
+            rows="4" 
+            placeholder="پاسخ کامل، شفاف و راهنمایی لازم را برای کاربر بنویسید..." 
+            class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary"
+          ></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-on-surface-variant mb-1 font-medium">وضعیت جدید تیکت:</label>
+            <select id="reply-status-select" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary">
+              <option value="answered">پاسخ داده شده (Answered)</option>
+              <option value="closed">بسته شد و حل گردید (Closed)</option>
+              <option value="pending">در حال پیگیری فنی (Pending)</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button type="button" onclick="forwardReplyToTelegram()" class="w-full btn-secondary py-2.5 rounded-xl font-medium text-xs flex items-center justify-center gap-1.5">
+              <span class="material-symbols-outlined text-base">send</span>
+              <span>ارسال مستقیم در تلگرام کاربر</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="pt-3 flex gap-3">
+          <button type="submit" class="flex-1 btn-primary py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(39,148,244,0.4)]">
+            <span class="material-symbols-outlined">send</span>
+            <span>ثبت و ذخیره پاسخ در سایت</span>
+          </button>
+          <button type="button" onclick="closeTicketReplyModal()" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-on-surface font-medium text-sm">
+            انصراف
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Add / Edit Product Modal -->
+  <div id="product-modal" class="fixed inset-0 z-[300] bg-background/90 backdrop-blur-2xl hidden items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 border border-secondary/30 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <h3 id="product-modal-title" class="font-bold text-lg text-on-surface">افزودن محصول جدید</h3>
+        <button onclick="closeProductModal()" class="text-on-surface-variant hover:text-white">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form onsubmit="handleSaveProduct(event)" class="space-y-4 text-xs sm:text-sm">
+        <input type="hidden" id="form-product-id" />
+
+        <div>
+          <label class="block text-on-surface-variant mb-1 font-medium">نام محصول:</label>
+          <input type="text" id="form-title" required class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-on-surface-variant mb-1 font-medium">دسته‌بندی:</label>
+            <select id="form-category" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary">
+              <option value="ai">هوش مصنوعی</option>
+              <option value="gadgets">گجت‌های هوشمند</option>
+              <option value="templates">قالب‌ها و کد</option>
+              <option value="audio">لوازم صوتی</option>
+              <option value="education">آموزش تخصصی</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-on-surface-variant mb-1 font-medium">نوع محصول:</label>
+            <select id="form-type" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary">
+              <option value="digital">دیجیتال (تحویل فوری)</option>
+              <option value="physical">فیزیکی (پستی)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-on-surface-variant mb-1 font-medium">قیمت (تومان):</label>
+            <input type="number" id="form-price" required class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+          </div>
+          <div>
+            <label class="block text-on-surface-variant mb-1 font-medium">موجودی انبار:</label>
+            <input type="number" id="form-stock" value="999" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-on-surface-variant mb-1 font-medium">آدرس اینترنتی تصویر (Image URL):</label>
+          <input type="url" id="form-image" placeholder="https://..." class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+        </div>
+
+        <div>
+          <label class="block text-on-surface-variant mb-1 font-medium">توضیحات کوتاه:</label>
+          <textarea id="form-desc" rows="3" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary"></textarea>
+        </div>
+
+        <div class="pt-4 flex gap-3">
+          <button type="submit" class="flex-1 btn-primary py-3 rounded-xl font-bold text-sm">
+            ذخیره و ثبت در فروشگاه
+          </button>
+          <button type="button" onclick="closeProductModal()" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-on-surface font-medium text-sm">
+            انصراف
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/tickets-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const ADMIN_PASS = 'Ali.mp1388';
+    let trafficChartInstance = null;
+    let currentTicketFilter = 'all';
+
+    function checkAdminSession() {
+      const isAuth = sessionStorage.getItem('mp_admin_authenticated') === 'true';
+      if (isAuth) {
+        document.getElementById('admin-login-modal').classList.add('hidden');
+        document.getElementById('admin-dashboard-container').classList.remove('hidden');
+        renderAdminTable();
+        renderAnalytics();
+        renderTicketsTable();
+      } else {
+        document.getElementById('admin-login-modal').classList.remove('hidden');
+        document.getElementById('admin-dashboard-container').classList.add('hidden');
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const input = document.getElementById('admin-password-input').value;
+      const errorMsg = document.getElementById('login-error-msg');
+
+      if (input === ADMIN_PASS) {
+        sessionStorage.setItem('mp_admin_authenticated', 'true');
+        errorMsg.classList.add('hidden');
+        showToast('ورود موفق به پنل مدیریت!');
+        checkAdminSession();
+      } else {
+        errorMsg.classList.remove('hidden');
+        showToast('گذرواژه نادرست است!', 'error');
+      }
+    }
+
+    function handleAdminLogout() {
+      sessionStorage.removeItem('mp_admin_authenticated');
+      showToast('از پنل مدیریت خارج شدید.');
+      checkAdminSession();
+    }
+
+    /* ========================================= */
+    /* TICKETS MANAGEMENT FUNCTIONS              */
+    /* ========================================= */
+    function renderTicketsTable() {
+      const tickets = getStoredTickets();
+      const searchQuery = (document.getElementById('ticket-search-input').value || '').toLowerCase().trim();
+      const body = document.getElementById('tickets-table-body');
+      
+      const pendingCount = tickets.filter(t => t.status === 'pending').length;
+      const answeredCount = tickets.filter(t => t.status === 'answered').length;
+      const closedCount = tickets.filter(t => t.status === 'closed').length;
+
+      // Update counters
+      const pendingStatEl = document.getElementById('stat-pending-tickets-count');
+      const sidebarBadgeEl = document.getElementById('sidebar-tickets-badge');
+      if (pendingStatEl) pendingStatEl.innerHTML = `${toPersianDigits(pendingCount)} <span class="text-xs font-normal">تیکت</span>`;
+      if (sidebarBadgeEl) sidebarBadgeEl.textContent = `${toPersianDigits(pendingCount)} جدید`;
+
+      document.getElementById('count-all-tickets').textContent = toPersianDigits(tickets.length);
+      document.getElementById('count-pending-tickets').textContent = toPersianDigits(pendingCount);
+      document.getElementById('count-answered-tickets').textContent = toPersianDigits(answeredCount);
+      document.getElementById('count-closed-tickets').textContent = toPersianDigits(closedCount);
+
+      const filtered = tickets.filter(t => {
+        const matchesStatus = currentTicketFilter === 'all' || t.status === currentTicketFilter;
+        const matchesSearch = !searchQuery || 
+          t.trackingCode.toLowerCase().includes(searchQuery) ||
+          t.name.toLowerCase().includes(searchQuery) ||
+          t.subject.toLowerCase().includes(searchQuery) ||
+          t.contact.toLowerCase().includes(searchQuery);
+        return matchesStatus && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        body.innerHTML = `
+          <tr>
+            <td colspan="8" class="py-8 text-center text-on-surface-variant text-xs">
+              هیچ تیکتی با این فیلتر یافت نشد.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      const statusMap = {
+        pending: { text: 'در انتظار پاسخ', class: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
+        answered: { text: 'پاسخ داده شده', class: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
+        closed: { text: 'بسته شده', class: 'bg-outline-variant/30 text-outline border-white/10' }
+      };
+
+      body.innerHTML = filtered.map(t => {
+        const st = statusMap[t.status] || statusMap.pending;
+        const isPriorityHigh = t.priority === 'فوری';
+
+        return `
+          <tr class="hover:bg-white/5 transition-colors">
+            <td class="py-3.5 pr-2 font-mono font-bold text-secondary text-xs">
+              ${t.trackingCode}
+            </td>
+            <td class="py-3.5">
+              <div class="font-bold text-on-surface text-xs sm:text-sm">${t.name}</div>
+              <div class="text-[11px] text-on-surface-variant font-mono">${t.contact}</div>
+            </td>
+            <td class="py-3.5 font-medium text-on-surface max-w-[200px] truncate" title="${t.subject}">
+              ${t.subject}
+            </td>
+            <td class="py-3.5 text-xs text-on-surface-variant">${t.department}</td>
+            <td class="py-3.5">
+              <span class="px-2 py-0.5 rounded-full text-[11px] font-bold ${isPriorityHigh ? 'bg-error/20 text-error border border-error/30' : 'bg-white/5 text-on-surface-variant'}">
+                ${t.priority}
+              </span>
+            </td>
+            <td class="py-3.5 text-xs text-outline font-mono">${t.createdAt}</td>
+            <td class="py-3.5">
+              <span class="px-2.5 py-1 rounded-lg border text-xs font-bold ${st.class}">
+                ${st.text}
+              </span>
+            </td>
+            <td class="py-3.5 pl-2 text-center">
+              <div class="flex items-center justify-center gap-1.5">
+                <button onclick="openTicketReplyModal('${t.id}')" class="px-3 py-1.5 rounded-xl bg-secondary/20 hover:bg-secondary text-secondary hover:text-surface-container-lowest transition-colors text-xs font-bold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm">reply</span>
+                  <span>پاسخ</span>
+                </button>
+                <button onclick="deleteTicket('${t.id}')" class="p-1.5 rounded-xl bg-white/5 hover:bg-error hover:text-white text-error transition-colors" title="حذف تیکت">
+                  <span class="material-symbols-outlined text-sm">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterTicketsByStatus(status, btn) {
+      currentTicketFilter = status;
+      document.querySelectorAll('.ticket-filter-btn').forEach(b => {
+        b.className = 'ticket-filter-btn px-3 py-1.5 rounded-xl bg-surface-container-high text-on-surface-variant font-medium text-xs hover:bg-white/10 transition-all';
+      });
+      btn.className = 'ticket-filter-btn px-3 py-1.5 rounded-xl bg-secondary text-surface-container-lowest font-bold text-xs transition-all';
+      renderTicketsTable();
+    }
+
+    let activeReplyTicket = null;
+
+    function openTicketReplyModal(ticketId) {
+      const tickets = getStoredTickets();
+      activeReplyTicket = tickets.find(t => t.id === ticketId);
+      if (!activeReplyTicket) return;
+
+      document.getElementById('reply-ticket-id').value = activeReplyTicket.id;
+      document.getElementById('modal-ticket-code').textContent = activeReplyTicket.trackingCode;
+      document.getElementById('modal-ticket-user').textContent = `کاربر: ${activeReplyTicket.name}`;
+      document.getElementById('modal-ticket-dept').textContent = activeReplyTicket.department;
+      document.getElementById('modal-ticket-priority').textContent = activeReplyTicket.priority;
+      document.getElementById('modal-ticket-date').textContent = activeReplyTicket.createdAt;
+      document.getElementById('modal-ticket-contact').textContent = activeReplyTicket.contact;
+      document.getElementById('modal-ticket-subject').textContent = activeReplyTicket.subject;
+      document.getElementById('modal-ticket-message').textContent = activeReplyTicket.message;
+      document.getElementById('reply-status-select').value = activeReplyTicket.status === 'closed' ? 'closed' : 'answered';
+      document.getElementById('reply-text-input').value = '';
+
+      // Render past replies
+      const repliesContainer = document.getElementById('modal-replies-list');
+      if (activeReplyTicket.replies && activeReplyTicket.replies.length > 0) {
+        repliesContainer.innerHTML = `
+          <h5 class="text-xs font-bold text-tertiary">سوابق پاسخ‌های داده شده:</h5>
+          ${activeReplyTicket.replies.map(r => `
+            <div class="p-3 rounded-xl bg-tertiary/10 border border-tertiary/30 space-y-1 text-xs">
+              <div class="flex justify-between items-center text-[11px] text-tertiary font-bold">
+                <span>${r.sender}</span>
+                <span class="font-mono text-outline">${r.timestamp}</span>
+              </div>
+              <p class="text-on-surface leading-relaxed whitespace-pre-line">${r.message}</p>
+            </div>
+          `).join('')}
+        `;
+      } else {
+        repliesContainer.innerHTML = `
+          <div class="p-2.5 rounded-xl bg-surface-container text-xs text-on-surface-variant">هنوز پاسخی برای این تیکت ثبت نشده است.</div>
+        `;
+      }
+
+      document.getElementById('ticket-reply-modal').classList.remove('hidden');
+      document.getElementById('ticket-reply-modal').classList.add('flex');
+    }
+
+    function closeTicketReplyModal() {
+      document.getElementById('ticket-reply-modal').classList.add('hidden');
+      document.getElementById('ticket-reply-modal').classList.remove('flex');
+    }
+
+    function handleSendAdminReply(e) {
+      e.preventDefault();
+      const ticketId = document.getElementById('reply-ticket-id').value;
+      const replyText = document.getElementById('reply-text-input').value;
+      const newStatus = document.getElementById('reply-status-select').value;
+
+      const res = addAdminReplyToTicket(ticketId, replyText, newStatus);
+      if (res) {
+        showToast(`پاسخ شما برای تیکت ${res.trackingCode} با موفقیت ثبت شد.`);
+        closeTicketReplyModal();
+        renderTicketsTable();
+      }
+    }
+
+    function forwardReplyToTelegram() {
+      if (!activeReplyTicket) return;
+      const replyText = document.getElementById('reply-text-input').value || 'سلام و احترام، پاسخ شما به تیکت آماده بررسی می‌باشد.';
+      const cleanContact = activeReplyTicket.contact.replace('@', '');
+      
+      const fullMsg = `پاسخ پشتیبانی MP STORE به تیکت شما (${activeReplyTicket.trackingCode}):\n\nموضوع: ${activeReplyTicket.subject}\n\nپاسخ:\n${replyText}`;
+      const encoded = encodeURIComponent(fullMsg);
+
+      window.open(`https://t.me/${cleanContact}?text=${encoded}`, '_blank');
+    }
+
+    function deleteTicket(ticketId) {
+      if (!confirm('آیا از حذف این تیکت اطمینان دارید؟')) return;
+      let tickets = getStoredTickets();
+      tickets = tickets.filter(t => t.id !== ticketId);
+      saveTickets(tickets);
+      renderTicketsTable();
+      showToast('تیکت با موفقیت حذف شد.');
+    }
+
+    /* ========================================= */
+    /* ANALYTICS SECTION FUNCTIONS               */
+    /* ========================================= */
+    function renderAnalytics() {
+      const analytics = getStoreAnalytics() || {};
+      
+      const todayViewsEl = document.getElementById('analytics-today-views');
+      const uniqueVisitorsEl = document.getElementById('analytics-unique-visitors');
+      const avgTimeEl = document.getElementById('analytics-avg-time');
+      const bounceRateEl = document.getElementById('analytics-bounce-rate');
+      const liveOnlineEl = document.getElementById('live-online-users');
+      const statTodayViewsEl = document.getElementById('stat-today-views');
+
+      if (todayViewsEl) todayViewsEl.textContent = toPersianDigits((analytics.todayViews || 3842).toLocaleString());
+      if (statTodayViewsEl) statTodayViewsEl.textContent = toPersianDigits((analytics.todayViews || 3842).toLocaleString());
+      if (uniqueVisitorsEl) uniqueVisitorsEl.textContent = toPersianDigits((analytics.uniqueVisitors || 1490).toLocaleString());
+      if (avgTimeEl) avgTimeEl.innerHTML = `${analytics.avgDuration || '۴:۲۵'} <span class="text-xs font-normal">دقیقه</span>`;
+      if (bounceRateEl) bounceRateEl.textContent = analytics.bounceRate || '۲۳.۴٪';
+      if (liveOnlineEl) liveOnlineEl.textContent = `${toPersianDigits(analytics.liveUsers || 24)} کاربر آنلاین هم‌اکنون`;
+
+      initTrafficChart(analytics);
+    }
+
+    function initTrafficChart(analytics, timeframe = '7d') {
+      const ctx = document.getElementById('trafficChart');
+      if (!ctx) return;
+
+      let labels = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
+      let viewsData = [2850, 3200, 3650, 3100, 4200, 4800, analytics.todayViews || 3842];
+      let visitorsData = [1120, 1250, 1390, 1180, 1540, 1720, analytics.uniqueVisitors || 1490];
+
+      if (timeframe === '30d') {
+        labels = ['هفته اول', 'هفته دوم', 'هفته سوم', 'هفته چهارم'];
+        viewsData = [18400, 22100, 24800, 26900];
+        visitorsData = [7200, 8900, 9800, 11200];
+      } else if (timeframe === 'today') {
+        labels = ['۰۰:۰۰', '۰۴:۰۰', '۰۸:۰۰', '۱۲:۰۰', '۱۶:۰۰', '۲۰:۰۰', 'هم‌اکنون'];
+        viewsData = [140, 60, 480, 1120, 980, 840, 222];
+        visitorsData = [50, 20, 190, 440, 380, 310, 100];
+      }
+
+      if (trafficChartInstance) {
+        trafficChartInstance.destroy();
+      }
+
+      trafficChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'بازدید کل (Page Views)',
+              data: viewsData,
+              borderColor: '#2794f4',
+              backgroundColor: 'rgba(39, 148, 244, 0.15)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointBackgroundColor: '#2794f4',
+              pointBorderColor: '#ffffff',
+              pointRadius: 4,
+              pointHoverRadius: 6
+            },
+            {
+              label: 'کاربران یکتا (Unique Visitors)',
+              data: visitorsData,
+              borderColor: '#e1b6ff',
+              backgroundColor: 'rgba(225, 182, 255, 0.1)',
+              borderWidth: 2,
+              borderDash: [4, 4],
+              fill: true,
+              tension: 0.4,
+              pointBackgroundColor: '#e1b6ff',
+              pointBorderColor: '#ffffff',
+              pointRadius: 3,
+              pointHoverRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              rtl: true,
+              textDirection: 'rtl',
+              backgroundColor: '#1f1f27',
+              titleColor: '#ffffff',
+              bodyColor: '#c6c5d6',
+              borderColor: 'rgba(255,255,255,0.1)',
+              borderWidth: 1,
+              padding: 12,
+              displayColors: true,
+              callbacks: {
+                label: function(context) {
+                  return ` ${context.dataset.label}: ${toPersianDigits(context.parsed.y.toLocaleString())}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.05)'
+              },
+              ticks: {
+                color: '#908f9f',
+                font: {
+                  family: 'Vazirmatn'
+                }
+              }
+            },
+            y: {
+              position: 'right',
+              grid: {
+                color: 'rgba(255, 255, 255, 0.05)'
+              },
+              ticks: {
+                color: '#908f9f',
+                font: {
+                  family: 'Vazirmatn'
+                },
+                callback: function(value) {
+                  return toPersianDigits(value);
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateChartTimeframe(range, btn) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('button').forEach(b => {
+        b.className = 'px-3 py-1 rounded-lg text-on-surface-variant hover:text-on-surface transition-all';
+      });
+      btn.className = 'px-3 py-1 rounded-lg bg-secondary text-surface-container-lowest font-bold transition-all';
+      const analytics = getStoreAnalytics() || {};
+      initTrafficChart(analytics, range);
+    }
+
+    /* ========================================= */
+    /* PRODUCTS MANAGEMENT FUNCTIONS             */
+    /* ========================================= */
+    function renderAdminTable() {
+      const products = getStoredProducts();
+      const searchQuery = (document.getElementById('admin-search-input').value || '').toLowerCase().trim();
+      const body = document.getElementById('admin-table-body');
+      
+      document.getElementById('stat-products-count').textContent = toPersianDigits(products.length);
+
+      const filtered = products.filter(p => 
+        !searchQuery || 
+        p.title.toLowerCase().includes(searchQuery) || 
+        p.categoryName.toLowerCase().includes(searchQuery)
+      );
+
+      if (filtered.length === 0) {
+        body.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-on-surface-variant text-xs">
+              محصولی یافت نشد.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      body.innerHTML = filtered.map(p => `
+        <tr class="hover:bg-white/5 transition-colors">
+          <td class="py-3 pr-2">
+            <img src="${p.image}" alt="${p.title}" class="w-10 h-10 object-cover rounded-lg border border-white/10" />
+          </td>
+          <td class="py-3 font-medium text-on-surface max-w-[200px] truncate">
+            <a href="product-detail.html?id=${p.id}" target="_blank" class="hover:text-secondary">
+              ${p.title}
+            </a>
+          </td>
+          <td class="py-3 text-xs text-on-surface-variant">${p.categoryName}</td>
+          <td class="py-3 text-xs">
+            <span class="px-2 py-0.5 rounded-full ${p.type === 'digital' ? 'bg-primary-container text-primary' : 'bg-surface-variant text-on-surface'}">
+              ${p.type === 'digital' ? 'دیجیتال' : 'فیزیکی'}
+            </span>
+          </td>
+          <td class="py-3 font-bold text-secondary text-xs sm:text-sm">${toPersianDigits(p.price)} تومان</td>
+          <td class="py-3">
+            <span class="inline-flex items-center gap-1 text-emerald-400 text-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              موجود (${toPersianDigits(p.stockCount || 99)})
+            </span>
+          </td>
+          <td class="py-3 pl-2 text-center">
+            <div class="flex items-center justify-center gap-2">
+              <button onclick="openEditProductModal('${p.id}')" class="p-1.5 rounded-lg bg-white/5 hover:bg-secondary hover:text-surface-container-lowest text-secondary transition-colors" title="ویرایش">
+                <span class="material-symbols-outlined text-base">edit</span>
+              </button>
+              <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-lg bg-white/5 hover:bg-error hover:text-surface-container-lowest text-error transition-colors" title="حذف">
+                <span class="material-symbols-outlined text-base">delete</span>
+              </button>
+              <a href="https://t.me/Mpstore1388bot?start=order_${p.id}" target="_blank" class="p-1.5 rounded-lg bg-white/5 hover:bg-tertiary hover:text-surface-container-lowest text-tertiary transition-colors" title="سفارش در تلگرام">
+                <span class="material-symbols-outlined text-base">send</span>
+              </a>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openAddProductModal() {
+      document.getElementById('product-modal-title').textContent = 'افزودن محصول جدید';
+      document.getElementById('form-product-id').value = '';
+      document.getElementById('form-title').value = '';
+      document.getElementById('form-category').value = 'ai';
+      document.getElementById('form-type').value = 'digital';
+      document.getElementById('form-price').value = '';
+      document.getElementById('form-stock').value = '999';
+      document.getElementById('form-image').value = '';
+      document.getElementById('form-desc').value = '';
+
+      document.getElementById('product-modal').classList.remove('hidden');
+      document.getElementById('product-modal').classList.add('flex');
+    }
+
+    function openEditProductModal(id) {
+      const product = getProductById(id);
+      if (!product) return;
+
+      document.getElementById('product-modal-title').textContent = 'ویرایش محصول';
+      document.getElementById('form-product-id').value = product.id;
+      document.getElementById('form-title').value = product.title;
+      document.getElementById('form-category').value = product.category;
+      document.getElementById('form-type').value = product.type;
+      document.getElementById('form-price').value = product.rawPrice || 100000;
+      document.getElementById('form-stock').value = product.stockCount || 99;
+      document.getElementById('form-image').value = product.image;
+      document.getElementById('form-desc').value = product.shortDesc;
+
+      document.getElementById('product-modal').classList.remove('hidden');
+      document.getElementById('product-modal').classList.add('flex');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+      document.getElementById('product-modal').classList.remove('flex');
+    }
+
+    function handleSaveProduct(e) {
+      e.preventDefault();
+      const id = document.getElementById('form-product-id').value;
+      const title = document.getElementById('form-title').value;
+      const category = document.getElementById('form-category').value;
+      const type = document.getElementById('form-type').value;
+      const rawPrice = parseInt(document.getElementById('form-price').value, 10);
+      const stock = parseInt(document.getElementById('form-stock').value, 10);
+      let img = document.getElementById('form-image').value;
+      const desc = document.getElementById('form-desc').value;
+
+      if (!img) {
+        img = "https://lh3.googleusercontent.com/aida-public/AB6AXuDmZ_izz984B8ebPOqr0V1OTETYQ3FigswrM6r8p5rKTRxwVZHAQUBf68srtoXBWruhvVwIBnCW3ZQch3Apbnnis0n-KBj96w8HjVH6udy_6O3kemjKl_ufTE-hxBY34zYv7qA7z_oUFZ3wauSEmhAcVyRWc9vXV9OJZ43UX3D9poqCMIXSxoNH_0idh4oqgsI4DbfT85P2_sHCjF3-zWs7oIE0rhhFycSU5Rfxo8WFmaSb1pBouaWv";
+      }
+
+      const catNames = {
+        ai: 'هوش مصنوعی',
+        gadgets: 'گجت‌های هوشمند',
+        templates: 'قالب‌ها و کد',
+        audio: 'لوازم صوتی',
+        education: 'آموزش تخصصی'
+      };
+
+      let products = getStoredProducts();
+
+      if (id) {
+        // Edit existing
+        const idx = products.findIndex(p => p.id === id);
+        if (idx !== -1) {
+          products[idx].title = title;
+          products[idx].category = category;
+          products[idx].categoryName = catNames[category] || category;
+          products[idx].type = type;
+          products[idx].rawPrice = rawPrice;
+          products[idx].price = rawPrice.toLocaleString();
+          products[idx].stockCount = stock;
+          products[idx].image = img;
+          products[idx].shortDesc = desc;
+          products[idx].fullDesc = desc;
+        }
+        showToast('اطلاعات محصول با موفقیت به‌روزرسانی شد.');
+      } else {
+        // Add new
+        const newId = 'prod-' + Date.now();
+        products.unshift({
+          id: newId,
+          title: title,
+          shortTitle: title,
+          type: type,
+          category: category,
+          categoryName: catNames[category] || category,
+          badge: type === 'digital' ? 'محصول دیجیتال' : 'فیزیکی',
+          price: rawPrice.toLocaleString(),
+          rawPrice: rawPrice,
+          rating: 5.0,
+          reviewsCount: 1,
+          inStock: true,
+          stockCount: stock,
+          shortDesc: desc,
+          fullDesc: desc,
+          features: [
+            { icon: "verified", title: "تضمین اصالت MP STORE" },
+            { icon: "bolt", title: "تحویل فوری در تلگرام" }
+          ],
+          image: img,
+          gallery: [img]
+        });
+        showToast('محصول جدید با موفقیت اضافه شد!');
+      }
+
+      saveProducts(products);
+      closeProductModal();
+      renderAdminTable();
+    }
+
+    function deleteProduct(id) {
+      if (!confirm('آیا از حذف این محصول از فروشگاه اطمینان دارید؟')) return;
+      let products = getStoredProducts();
+      products = products.filter(p => p.id !== id);
+      saveProducts(products);
+      renderAdminTable();
+      showToast('محصول با موفقیت حذف شد.');
+    }
+
+    document.addEventListener('DOMContentLoaded', checkAdminSession);
+  </script>
+</body>
+</html>

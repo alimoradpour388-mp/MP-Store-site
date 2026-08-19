@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>MP STORE | فروشگاه محصولات دیجیتال و هوش مصنوعی</title>
+  
+  <!-- Google Fonts: Vazirmatn & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Config based on Aetheric Tech Design System -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#959bff",
+            "surface-container-low": "#1b1b22",
+            "on-secondary": "#00325a",
+            "surface-container": "#1f1f27",
+            "outline-variant": "#464654",
+            "inverse-primary": "#494fca",
+            "on-tertiary-fixed": "#2e004d",
+            "on-background": "#e4e1ec",
+            "secondary-container": "#2794f4",
+            "tertiary": "#e1b6ff",
+            "on-tertiary-fixed-variant": "#6918a1",
+            "surface-container-lowest": "#0d0e15",
+            "on-tertiary": "#4c007b",
+            "on-secondary-container": "#002b4f",
+            "surface-container-high": "#292931",
+            "outline": "#908f9f",
+            "on-error-container": "#ffdad6",
+            "primary": "#bfc1ff",
+            "surface": "#13131a",
+            "on-primary-fixed": "#02006d",
+            "tertiary-fixed": "#f2daff",
+            "secondary-fixed-dim": "#a0c9ff",
+            "on-secondary-fixed": "#001c37",
+            "surface-variant": "#34343c",
+            "tertiary-fixed-dim": "#e1b6ff",
+            "primary-fixed": "#e1e0ff",
+            "secondary": "#a0c9ff",
+            "surface-bright": "#393841",
+            "surface-tint": "#bfc1ff",
+            "error": "#ffb4ab",
+            "on-error": "#690005",
+            "on-surface": "#e4e1ec",
+            "background": "#13131a",
+            "primary-fixed-dim": "#bfc1ff",
+            "primary-container": "#2023a5",
+            "on-surface-variant": "#c6c5d6",
+            "on-primary": "#12129c",
+            "surface-container-highest": "#34343c",
+            "inverse-surface": "#e4e1ec",
+            "on-tertiary-container": "#cb86ff",
+            "on-primary-fixed-variant": "#2f34b1",
+            "error-container": "#93000a",
+            "on-secondary-fixed-variant": "#00487f",
+            "inverse-on-surface": "#303038",
+            "tertiary-container": "#5a0091",
+            "surface-dim": "#13131a",
+            "secondary-fixed": "#d2e4ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "2rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "base": "8px",
+            "gutter": "16px",
+            "container-margin": "24px",
+            "card-padding": "20px",
+            "section-gap": "80px"
+          },
+          fontFamily: {
+            "headline-md": ["Vazirmatn", "sans-serif"],
+            "title-lg": ["Vazirmatn", "sans-serif"],
+            "body-md": ["Vazirmatn", "sans-serif"],
+            "display-lg": ["Vazirmatn", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-background min-h-screen relative flex flex-col font-body-md overflow-x-hidden bg-grid-pattern">
+
+  <!-- Atmospheric Aurora Glow Blobs -->
+  <div class="aurora-blob bg-secondary-container/15 w-[650px] h-[650px] top-[-10%] right-[-10%]"></div>
+  <div class="aurora-blob bg-tertiary-container/15 w-[550px] h-[550px] bottom-[10%] left-[-10%]"></div>
+  <div class="aurora-blob bg-primary/10 w-[400px] h-[400px] top-[40%] left-[20%]"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-4 inset-x-4 z-50 max-w-7xl mx-auto">
+    <nav class="glass-nav rounded-full px-6 h-16 flex items-center justify-between transition-all">
+      <!-- Right/Brand Section (in RTL) -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center p-1 overflow-hidden shadow-[0_0_15px_rgba(39,148,244,0.3)] group-hover:scale-105 transition-transform">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <span class="font-bold text-xl md:text-2xl bg-gradient-to-l from-secondary via-primary to-tertiary bg-clip-text text-transparent tracking-tight">
+            MP STORE
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation Links (Desktop) -->
+      <div class="hidden md:flex items-center gap-8 font-medium text-base text-on-surface-variant">
+        <a href="index.html" class="text-tertiary font-bold border-b-2 border-tertiary pb-0.5 transition-colors">خانه</a>
+        <a href="products.html" class="hover:text-secondary transition-colors py-1">محصولات</a>
+        <a href="products.html?category=all" class="hover:text-secondary transition-colors py-1">دسته‌بندی‌ها</a>
+        <a href="about.html" class="hover:text-secondary transition-colors py-1">درباره ما</a>
+        <a href="contact.html" class="hover:text-secondary transition-colors py-1">تماس با ما</a>
+      </div>
+
+      <!-- Actions (Left side in RTL) -->
+      <div class="flex items-center gap-3">
+        <!-- Search Trigger -->
+        <button onclick="toggleSearchModal(true)" class="p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="جستجو">
+          <span class="material-symbols-outlined text-2xl">search</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button onclick="toggleCartDrawer()" class="relative p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="سبد خرید">
+          <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+          <span class="cart-count-badge hidden absolute top-0.5 right-0.5 w-4 h-4 bg-tertiary text-surface-container-lowest rounded-full text-[10px] font-bold flex items-center justify-center">۰</span>
+        </button>
+
+        <!-- Telegram Action Button -->
+        <a href="https://t.me/Mpstore1388bot" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-container/20 text-secondary border border-secondary/40 hover:bg-secondary-container hover:text-white hover:border-transparent btn-glow-primary transition-all duration-300 text-sm font-semibold">
+          <span class="material-symbols-outlined text-lg">send</span>
+          <span>خرید از ربات تلگرام</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-on-surface hover:bg-white/5 rounded-full" title="منو">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 md:hidden mt-2 p-4 glass-panel rounded-2xl flex flex-col gap-3 transition-all duration-300 border border-white/10 shadow-2xl">
+      <a href="index.html" class="px-4 py-2 rounded-lg bg-secondary/10 text-secondary font-bold">خانه</a>
+      <a href="products.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">محصولات</a>
+      <a href="products.html?category=all" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">دسته‌بندی‌ها</a>
+      <a href="about.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">درباره ما</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">تماس با ما</a>
+      <a href="admin.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-outline text-sm">پنل مدیریت</a>
+      <a href="https://t.me/Mpstore1388bot" target="_blank" class="mt-2 py-3 rounded-xl bg-gradient-to-r from-secondary-container to-inverse-primary text-white text-center font-bold flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">send</span>
+        خرید مستقیم از تلگرام
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Hero & Content Canvas -->
+  <main class="flex-grow pt-32 pb-section-gap px-container-margin md:px-12 max-w-7xl mx-auto w-full z-10 relative flex flex-col gap-24">
+
+    <!-- Hero Section -->
+    <section class="flex flex-col lg:flex-row items-center justify-between gap-12 pt-6">
+      <!-- Right Content (RTL) -->
+      <div class="flex-1 space-y-6 text-center lg:text-right">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-secondary/30 text-secondary text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+          نسل جدید فروشگاه هوشمند دیجیتال
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+          <span class="text-on-background">دنیای دیجیتال،</span><br/>
+          <span class="text-gradient">یک قدم نزدیک‌تر</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-on-surface-variant max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+          جدیدترین محصولات دیجیتال، ابزارهای هوش مصنوعی و پکیج‌های آموزشی را با تجربه‌ای بی‌نظیر و خریدی سریع از طریق ربات تلگرام ما تجربه کنید.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+          <a href="products.html" class="btn-primary px-8 py-3.5 rounded-full text-center flex items-center justify-center gap-2 font-bold text-base shadow-[0_0_20px_rgba(39,148,244,0.4)]">
+            <span class="material-symbols-outlined text-xl">shopping_bag</span>
+            <span>مشاهده محصولات</span>
+          </a>
+          <a href="https://t.me/Mpstore1388bot" target="_blank" rel="noopener noreferrer" class="btn-secondary px-8 py-3.5 rounded-full text-center flex items-center justify-center gap-2 font-bold text-base">
+            <span class="material-symbols-outlined text-xl">send</span>
+            <span>خرید از ربات تلگرام</span>
+          </a>
+        </div>
+
+        <!-- Quick Stats Banner -->
+        <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/5 max-w-lg mx-auto lg:mx-0">
+          <div>
+            <div class="text-xl sm:text-2xl font-bold text-secondary">۵۰+</div>
+            <div class="text-xs text-on-surface-variant">ابزار و محصول</div>
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-bold text-tertiary">۲۴/۷</div>
+            <div class="text-xs text-on-surface-variant">پشتیبانی تلگرام</div>
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-bold text-primary">۱۰۰٪</div>
+            <div class="text-xs text-on-surface-variant">تحویل آنی</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left Visual (Futuristic 3D Floating Mockup) -->
+      <div class="flex-1 relative w-full h-[380px] sm:h-[460px] lg:h-[520px] flex items-center justify-center">
+        <div class="absolute inset-0 bg-secondary-container/10 rounded-full blur-3xl"></div>
+        
+        <!-- Interactive Floating Badges -->
+        <div class="absolute top-6 left-6 glass-panel px-4 py-2 rounded-2xl flex items-center gap-2 z-20 animate-float shadow-xl border border-white/10">
+          <span class="material-symbols-outlined text-secondary text-2xl">memory</span>
+          <div class="text-right">
+            <div class="text-xs font-bold text-on-surface">پردازش هوشمند</div>
+            <div class="text-[10px] text-tertiary">Core v2.4</div>
+          </div>
+        </div>
+
+        <div class="absolute bottom-8 right-6 glass-panel px-4 py-2 rounded-2xl flex items-center gap-2 z-20 animate-float shadow-xl border border-white/10" style="animation-delay: -2s;">
+          <span class="material-symbols-outlined text-tertiary text-2xl">rocket_launch</span>
+          <div class="text-right">
+            <div class="text-xs font-bold text-on-surface">تحویل فوری</div>
+            <div class="text-[10px] text-secondary">ربات تلگرام</div>
+          </div>
+        </div>
+
+        <!-- Central Futuristic Image Mockup -->
+        <div class="w-full h-full glass-panel rounded-3xl p-3 relative overflow-hidden group border border-white/10 flex items-center justify-center">
+          <div class="absolute inset-0 bg-gradient-to-tr from-secondary/10 via-transparent to-tertiary/10 pointer-events-none"></div>
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOqBUcY9-sMOkIjiSQSRhb8K05ROTe6CAznyMZKUhVHzFUm4VF445GDh2a-b5gdy-5ncaiENbMmBG7XzZIUuU3-JDO4h-2BMnAEyi2kouPsuyGPKuPINw1CJ9sg9DyPRAyxy5fSF626H_Z1JbjWb0dBmsSK73BcB-RPHKzrGx3yH_aU7poRAHmQSVhNV9onz7ZtKZZnUcYa_b8Jv2BCvERaUR8QyIfuji5fzzwcFxqjHhH0lGsbuji" 
+            alt="Futuristic MP STORE Interface" 
+            class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500 drop-shadow-2xl" 
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Highlights Section -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-secondary/50">
+        <div class="w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/30 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-2xl">bolt</span>
+        </div>
+        <h3 class="font-bold text-lg text-on-surface">تحویل فوری و آنی</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">دریافت بی‌درنگ لایسنس‌ها، فایل‌ها و آموزش‌ها بلافاصله پس از ثبت در تلگرام.</p>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-secondary/50">
+        <div class="w-12 h-12 rounded-xl bg-tertiary/10 border border-tertiary/30 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-2xl">support_agent</span>
+        </div>
+        <h3 class="font-bold text-lg text-on-surface">پشتیبانی ۲۴ ساعته</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">پاسخگویی اختصاصی و راهنمایی گام‌به‌گام توسط تیم متخصص MP STORE.</p>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-secondary/50">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-2xl">verified_user</span>
+        </div>
+        <h3 class="font-bold text-lg text-on-surface">ضمانت اصالت و کیفیت</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">تمامی ابزارها، قالب‌ها و گجت‌ها تست شده و دارای تضمین عملکرد هستند.</p>
+      </div>
+
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-secondary/50">
+        <div class="w-12 h-12 rounded-xl bg-secondary-container/10 border border-secondary-container/30 flex items-center justify-center text-secondary-container group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-2xl">smart_toy</span>
+        </div>
+        <h3 class="font-bold text-lg text-on-surface">ربات تلگرام هوشمند</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed">فرآیند سفارش‌گذاری خودکار، ساده و بی‌دردسر بدون نیاز به ثبت‌نام پیچیده.</p>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="space-y-10" id="products">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-right">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-on-background">محصولات ویژه</h2>
+          <p class="text-on-surface-variant text-base mt-1">انتخابی از برترین و پرفروش‌ترین ابزارهای دیجیتال</p>
+        </div>
+        <a href="products.html" class="inline-flex items-center gap-2 text-secondary hover:text-tertiary transition-colors font-bold text-base group">
+          <span>مشاهده همه محصولات</span>
+          <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Featured Product 1 -->
+        <article class="glass-panel rounded-2xl p-card-padding flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300">
+          <div class="w-full h-52 rounded-xl bg-surface-container overflow-hidden relative -mt-8 mb-2 border border-outline-variant/30 shadow-lg group-hover:scale-[1.03] transition-transform duration-500">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ38GXKdDQjHyja6GSJLx7ukVAGyzQTLS2SInS6-lT_maK7zhsTD9Zy0m8fhc-b7FX0zyVunVLLzaghUelErs0DewHcXTesZv0Q4XrHP9Xh8u9WMxhwC5KmYdToTAqsMPYpQWPP57VFsgyRtIyxxdHL8CWXZUwFAybGxBNzBDDERrKHzHsG875MayfQGfJeOnq32oPZeej9xgpRHOpdf3sUa1h6bdVDcjxdfjOVTgcBqsOoPPrstWW" 
+              alt="پکیج پرامپت حرفه‌ای" 
+              class="w-full h-full object-cover" 
+            />
+            <span class="absolute top-3 left-3 bg-primary-container text-primary font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md">هوش مصنوعی</span>
+          </div>
+          <div class="flex-grow space-y-2">
+            <h3 class="font-bold text-lg text-on-background group-hover:text-secondary transition-colors">
+              <a href="product-detail.html?id=prompt-package-pro">پکیج پرامپت حرفه‌ای</a>
+            </h3>
+            <p class="text-sm text-on-surface-variant line-clamp-2">مجموعه‌ای کامل از پرامپت‌های تست شده برای ChatGPT، Midjourney و Claude.</p>
+          </div>
+          <div class="flex justify-between items-center mt-auto pt-4 border-t border-white/10">
+            <div>
+              <span class="text-xs text-on-surface-variant block">قیمت محصول</span>
+              <span class="text-lg font-bold text-secondary">۴۵۰,۰۰۰ <span class="text-xs font-normal">تومان</span></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="addToCart({id: 'prompt-package-pro', title: 'پکیج پرامپت حرفه‌ای', price: '۴۵۰,۰۰۰', rawPrice: 450000, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCZ38GXKdDQjHyja6GSJLx7ukVAGyzQTLS2SInS6-lT_maK7zhsTD9Zy0m8fhc-b7FX0zyVunVLLzaghUelErs0DewHcXTesZv0Q4XrHP9Xh8u9WMxhwC5KmYdToTAqsMPYpQWPP57VFsgyRtIyxxdHL8CWXZUwFAybGxBNzBDDERrKHzHsG875MayfQGfJeOnq32oPZeej9xgpRHOpdf3sUa1h6bdVDcjxdfjOVTgcBqsOoPPrstWW'})" class="p-2 rounded-full bg-white/10 hover:bg-secondary hover:text-surface-container-lowest text-secondary transition-colors" title="افزودن به سبد">
+                <span class="material-symbols-outlined text-xl">shopping_cart</span>
+              </button>
+              <a href="https://t.me/Mpstore1388bot" target="_blank" class="btn-primary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+                <span>سفارش</span>
+                <span class="material-symbols-outlined text-sm">send</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Featured Product 2 -->
+        <article class="glass-panel rounded-2xl p-card-padding flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300">
+          <div class="w-full h-52 rounded-xl bg-surface-container overflow-hidden relative -mt-8 mb-2 border border-outline-variant/30 shadow-lg group-hover:scale-[1.03] transition-transform duration-500">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJivDWdlmvsRTNGRxxVAybhNhRAAY3tST8oMs5i8pZANuESwpZBNNFI-q4RJfGpDO_S-g_m5AO_gyweO_9k41EBh4DOwHmrQtv_gY6eeO3f83eZI_ULKlHJmg-iFbL4J9AP0EGZPHmSXOpxJfqcOTWEUNK2jqod2TZtcnJeQXBXiKiBu7ZWu-ONwgUv7DLKOvGhU9z85MNfKiXkfOFBF1sOUr8GoQgurcRAgx8kC2jRaHEkXkCRHLZ" 
+              alt="هدفون بی‌سیم X-Pro" 
+              class="w-full h-full object-cover" 
+            />
+            <span class="absolute top-3 left-3 bg-tertiary/20 text-tertiary font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md">گجت صوتی</span>
+          </div>
+          <div class="flex-grow space-y-2">
+            <h3 class="font-bold text-lg text-on-background group-hover:text-secondary transition-colors">
+              <a href="product-detail.html?id=wireless-earbuds-xpro">هدفون بی‌سیم X-Pro</a>
+            </h3>
+            <p class="text-sm text-on-surface-variant line-clamp-2">کیفیت صدای بی‌نظیر با حذف نویز فعال هیبریدی و باتری قدرتمند.</p>
+          </div>
+          <div class="flex justify-between items-center mt-auto pt-4 border-t border-white/10">
+            <div>
+              <span class="text-xs text-on-surface-variant block">قیمت محصول</span>
+              <span class="text-lg font-bold text-secondary">۲,۱۰۰,۰۰۰ <span class="text-xs font-normal">تومان</span></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="addToCart({id: 'wireless-earbuds-xpro', title: 'هدفون بی‌سیم X-Pro', price: '۲,۱۰۰,۰۰۰', rawPrice: 2100000, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCJivDWdlmvsRTNGRxxVAybhNhRAAY3tST8oMs5i8pZANuESwpZBNNFI-q4RJfGpDO_S-g_m5AO_gyweO_9k41EBh4DOwHmrQtv_gY6eeO3f83eZI_ULKlHJmg-iFbL4J9AP0EGZPHmSXOpxJfqcOTWEUNK2jqod2TZtcnJeQXBXiKiBu7ZWu-ONwgUv7DLKOvGhU9z85MNfKiXkfOFBF1sOUr8GoQgurcRAgx8kC2jRaHEkXkCRHLZ'})" class="p-2 rounded-full bg-white/10 hover:bg-secondary hover:text-surface-container-lowest text-secondary transition-colors" title="افزودن به سبد">
+                <span class="material-symbols-outlined text-xl">shopping_cart</span>
+              </button>
+              <a href="https://t.me/Mpstore1388bot" target="_blank" class="btn-primary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+                <span>سفارش</span>
+                <span class="material-symbols-outlined text-sm">send</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Featured Product 3 -->
+        <article class="glass-panel rounded-2xl p-card-padding flex flex-col gap-4 group hover:-translate-y-1 transition-all duration-300">
+          <div class="w-full h-52 rounded-xl bg-surface-container overflow-hidden relative -mt-8 mb-2 border border-outline-variant/30 shadow-lg group-hover:scale-[1.03] transition-transform duration-500">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmAylovQM7djxDNrI1LNhYBwrq03gsswwlV_k1-397LcqhK244Aagm6ttjy-7_RJ3bbfCzyhRNmf_kqSZQ8jXrwuwU_xfP1Hpic-CUrVq9oQftKBplkMJGq_kuPOUxhdZ_x8cmb-RyH1-2rhgVkxtaOEqulfeRkcSFlAmohmq08IE-JN9FdOaxPAUSWFw4Z9oHvyypW7yHO5DdfzA-5OTDQuAF9kCOMQlJaEaO2FfyzkMVkqPphDL2" 
+              alt="دوره جامع هوش مصنوعی" 
+              class="w-full h-full object-cover" 
+            />
+            <span class="absolute top-3 left-3 bg-primary/20 text-primary font-bold text-xs px-2.5 py-1 rounded-full backdrop-blur-md">آموزش تخصصی</span>
+          </div>
+          <div class="flex-grow space-y-2">
+            <h3 class="font-bold text-lg text-on-background group-hover:text-secondary transition-colors">
+              <a href="product-detail.html?id=ai-comprehensive-course">دوره جامع هوش مصنوعی</a>
+            </h3>
+            <p class="text-sm text-on-surface-variant line-clamp-2">از صفر تا صد کاربردهای هوش مصنوعی در زندگی، کسب‌وکار و اتوماسیون.</p>
+          </div>
+          <div class="flex justify-between items-center mt-auto pt-4 border-t border-white/10">
+            <div>
+              <span class="text-xs text-on-surface-variant block">قیمت دوره</span>
+              <span class="text-lg font-bold text-secondary">۸۹۰,۰۰۰ <span class="text-xs font-normal">تومان</span></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="addToCart({id: 'ai-comprehensive-course', title: 'دوره جامع هوش مصنوعی', price: '۸۹۰,۰۰۰', rawPrice: 890000, image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmAylovQM7djxDNrI1LNhYBwrq03gsswwlV_k1-397LcqhK244Aagm6ttjy-7_RJ3bbfCzyhRNmf_kqSZQ8jXrwuwU_xfP1Hpic-CUrVq9oQftKBplkMJGq_kuPOUxhdZ_x8cmb-RyH1-2rhgVkxtaOEqulfeRkcSFlAmohmq08IE-JN9FdOaxPAUSWFw4Z9oHvyypW7yHO5DdfzA-5OTDQuAF9kCOMQlJaEaO2FfyzkMVkqPphDL2'})" class="p-2 rounded-full bg-white/10 hover:bg-secondary hover:text-surface-container-lowest text-secondary transition-colors" title="افزودن به سبد">
+                <span class="material-symbols-outlined text-xl">shopping_cart</span>
+              </button>
+              <a href="https://t.me/Mpstore1388bot" target="_blank" class="btn-primary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+                <span>سفارش</span>
+                <span class="material-symbols-outlined text-sm">send</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Detail Showcase Banner -->
+      <div class="glass-panel rounded-3xl p-8 lg:p-12 relative overflow-hidden border border-secondary/30">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+            <span class="px-3.5 py-1 rounded-full bg-secondary-container/20 text-secondary text-xs font-bold border border-secondary/30">محصول منتخب هفته</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-on-surface leading-snug">بسته جامع ابزارهای بهره‌وری هوش مصنوعی</h3>
+            <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed">
+              با این بسته بی‌نظیر، تمام کارهای روزمره خود را به سطح جدیدی از سرعت و دقت ارتقا دهید. شامل ابزارهای شخصی‌سازی شده تحلیل، تولید محتوا و اتوماسیون وظایف تکراری.
+            </p>
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <span class="text-2xl font-black text-secondary">۳۵۰,۰۰۰ <span class="text-sm font-normal text-on-surface-variant">تومان</span></span>
+              <a href="product-detail.html?id=ai-copilot-pro" class="btn-primary px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
+                <span>مشاهده مشخصات و خرید</span>
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5 flex justify-center">
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZ_izz984B8ebPOqr0V1OTETYQ3FigswrM6r8p5rKTRxwVZHAQUBf68srtoXBWruhvVwIBnCW3ZQch3Apbnnis0n-KBj96w8HjVH6udy_6O3kemjKl_ufTE-hxBY34zYv7qA7z_oUFZ3wauSEmhAcVyRWc9vXV9OJZ43UX3D9poqCMIXSxoNH_0idh4oqgsI4DbfT85P2_sHCjF3-zWs7oIE0rhhFycSU5Rfxo8WFmaSb1pBouaWv" 
+              alt="AI Copilot Pro" 
+              class="rounded-2xl max-h-64 object-cover shadow-2xl border border-white/10 hover:scale-105 transition-transform duration-500" 
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="space-y-8">
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-on-background">دسته‌بندی‌های پرطرفدار</h2>
+        <p class="text-on-surface-variant text-sm">محصولات مورد نیاز خود را در دسته‌های متنوع پیدا کنید</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <a href="products.html?category=ai" class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center gap-3 group hover:border-secondary/60">
+          <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-3xl">psychology</span>
+          </div>
+          <h4 class="font-bold text-base text-on-surface">هوش مصنوعی</h4>
+          <span class="text-xs text-on-surface-variant">ابزارها و پرامپت‌ها</span>
+        </a>
+
+        <a href="products.html?category=gadgets" class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center gap-3 group hover:border-secondary/60">
+          <div class="w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-3xl">devices_other</span>
+          </div>
+          <h4 class="font-bold text-base text-on-surface">گجت‌های هوشمند</h4>
+          <span class="text-xs text-on-surface-variant">ساعت، کیبورد و واقعیت مجازی</span>
+        </a>
+
+        <a href="products.html?category=templates" class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center gap-3 group hover:border-secondary/60">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-3xl">code</span>
+          </div>
+          <h4 class="font-bold text-base text-on-surface">قالب‌ها و کد</h4>
+          <span class="text-xs text-on-surface-variant">سورس‌کد و کامپوننت UI</span>
+        </a>
+
+        <a href="products.html?category=education" class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center gap-3 group hover:border-secondary/60">
+          <div class="w-14 h-14 rounded-2xl bg-secondary-container/10 flex items-center justify-center text-secondary-container group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-3xl">school</span>
+          </div>
+          <h4 class="font-bold text-base text-on-surface">آموزش تخصصی</h4>
+          <span class="text-xs text-on-surface-variant">دوره‌های ویدیویی صفر تا صد</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full rounded-t-3xl mt-section-gap border-t border-outline-variant/10 flex flex-col items-center py-16 px-container-margin bg-gradient-to-b from-transparent to-surface-container bg-surface-container-lowest text-secondary font-body-md z-10 relative">
+    <div class="flex flex-col items-center gap-6 mb-8 w-full max-w-5xl">
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE" class="w-10 h-10 rounded-full grayscale opacity-80" />
+        <span class="text-2xl font-black tracking-tight text-secondary">MP STORE</span>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full text-on-surface-variant text-sm">
+        <a href="contact.html" class="hover:text-tertiary transition-colors">تماس با ما</a>
+        <a href="contact.html#faq" class="hover:text-tertiary transition-colors">سوالات متداول</a>
+        <a href="about.html" class="hover:text-tertiary transition-colors">درباره ما</a>
+        <a href="contact.html" class="hover:text-tertiary transition-colors">شرایط و قوانین</a>
+        <a href="admin.html" class="hover:text-secondary transition-colors text-outline">ورود مدیریت</a>
+      </div>
+    </div>
+    <div class="text-center text-outline text-xs border-t border-white/5 pt-6 w-full max-w-5xl opacity-75">
+      © ۲۰۲۴ تمامی حقوق برای MP STORE محفوظ است. طراحی شده با عشق در دنیای دیجیتال.
+    </div>
+  </footer>
+
+  <!-- Search Modal Overlay -->
+  <div id="search-modal" class="fixed inset-0 z-[100] bg-background/90 backdrop-blur-2xl hidden items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 relative border border-secondary/30 shadow-2xl">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+        <div class="flex items-center gap-2 text-secondary font-bold text-lg">
+          <span class="material-symbols-outlined">search</span>
+          <span>جستجو در محصولات MP STORE</span>
+        </div>
+        <button onclick="toggleSearchModal(false)" class="text-on-surface-variant hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <div class="relative mb-6">
+        <input 
+          type="text" 
+          id="global-search-input" 
+          placeholder="نام محصول، هوش مصنوعی، گجت یا قالب مورد نظر را تایپ کنید..." 
+          class="w-full bg-surface-container-high/80 border border-outline-variant/30 rounded-xl py-3 pr-4 pl-12 text-on-surface focus:outline-none focus:border-secondary transition-colors"
+          oninput="handleLiveSearch(this.value)"
+        />
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+      </div>
+
+      <!-- Search Results Box -->
+      <div id="search-results" class="max-h-72 overflow-y-auto space-y-3 pr-1">
+        <p class="text-xs text-on-surface-variant text-center py-6">کلمه‌ای برای جستجو تایپ کنید...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div id="cart-drawer" class="fixed inset-0 z-[100] bg-background/80 backdrop-blur-md hidden justify-start">
+    <div class="w-full max-w-md bg-surface-container-low h-full border-l border-white/10 p-6 flex flex-col justify-between shadow-2xl animate-in slide-in-from-right">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div class="flex items-center gap-2 text-secondary font-bold text-lg">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span>سبد خرید شما</span>
+          </div>
+          <button onclick="toggleCartDrawer()" class="text-on-surface-variant hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div id="cart-items-list" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-on-surface-variant text-sm">مجموع سبد:</span>
+          <span id="cart-total-price" class="text-xl font-bold text-secondary">۰ تومان</span>
+        </div>
+        <button onclick="checkoutCartTelegram()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-secondary-container to-inverse-primary text-white font-bold flex items-center justify-center gap-2 btn-glow-primary">
+          <span class="material-symbols-outlined">send</span>
+          <span>ثبت و تکمیل سفارش در تلگرام</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript dependencies -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function handleLiveSearch(query) {
+      const resultsContainer = document.getElementById('search-results');
+      if (!query || query.trim() === '') {
+        resultsContainer.innerHTML = '<p class="text-xs text-on-surface-variant text-center py-6">کلمه‌ای برای جستجو تایپ کنید...</p>';
+        return;
+      }
+      const products = getStoredProducts();
+      const q = query.toLowerCase().trim();
+      const filtered = products.filter(p => 
+        p.title.toLowerCase().includes(q) || 
+        p.shortDesc.toLowerCase().includes(q) || 
+        p.categoryName.toLowerCase().includes(q)
+      );
+
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-sm text-on-surface-variant text-center py-6">محصولی با این مشخصات یافت نشد.</p>';
+        return;
+      }
+
+      resultsContainer.innerHTML = filtered.map(p => `
+        <a href="product-detail.html?id=${p.id}" class="flex items-center gap-3 p-3 glass-panel rounded-xl hover:border-secondary/50 transition-colors block">
+          <img src="${p.image}" alt="${p.title}" class="w-12 h-12 object-cover rounded-lg border border-white/10" />
+          <div class="flex-1 min-w-0">
+            <h4 class="font-medium text-sm text-on-surface truncate">${p.title}</h4>
+            <span class="text-xs text-secondary font-bold">${toPersianDigits(p.price)} تومان</span>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_left</span>
+        </a>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>مشخصات و خرید محصول | MP STORE</title>
+  
+  <!-- Google Fonts: Vazirmatn & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#959bff",
+            "surface-container-low": "#1b1b22",
+            "on-secondary": "#00325a",
+            "surface-container": "#1f1f27",
+            "outline-variant": "#464654",
+            "inverse-primary": "#494fca",
+            "on-tertiary-fixed": "#2e004d",
+            "on-background": "#e4e1ec",
+            "secondary-container": "#2794f4",
+            "tertiary": "#e1b6ff",
+            "on-tertiary-fixed-variant": "#6918a1",
+            "surface-container-lowest": "#0d0e15",
+            "on-tertiary": "#4c007b",
+            "on-secondary-container": "#002b4f",
+            "surface-container-high": "#292931",
+            "outline": "#908f9f",
+            "on-error-container": "#ffdad6",
+            "primary": "#bfc1ff",
+            "surface": "#13131a",
+            "on-primary-fixed": "#02006d",
+            "tertiary-fixed": "#f2daff",
+            "secondary-fixed-dim": "#a0c9ff",
+            "on-secondary-fixed": "#001c37",
+            "surface-variant": "#34343c",
+            "tertiary-fixed-dim": "#e1b6ff",
+            "primary-fixed": "#e1e0ff",
+            "secondary": "#a0c9ff",
+            "surface-bright": "#393841",
+            "surface-tint": "#bfc1ff",
+            "error": "#ffb4ab",
+            "on-error": "#690005",
+            "on-surface": "#e4e1ec",
+            "background": "#13131a",
+            "primary-fixed-dim": "#bfc1ff",
+            "primary-container": "#2023a5",
+            "on-surface-variant": "#c6c5d6",
+            "on-primary": "#12129c",
+            "surface-container-highest": "#34343c",
+            "inverse-surface": "#e4e1ec",
+            "on-tertiary-container": "#cb86ff",
+            "on-primary-fixed-variant": "#2f34b1",
+            "error-container": "#93000a",
+            "on-secondary-fixed-variant": "#00487f",
+            "inverse-on-surface": "#303038",
+            "tertiary-container": "#5a0091",
+            "surface-dim": "#13131a",
+            "secondary-fixed": "#d2e4ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "2rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "base": "8px",
+            "gutter": "16px",
+            "container-margin": "24px",
+            "card-padding": "20px",
+            "section-gap": "80px"
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-surface min-h-screen aurora-bg flex flex-col relative overflow-x-hidden bg-grid-pattern">
+
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-4 inset-x-4 z-50 max-w-7xl mx-auto">
+    <nav class="glass-nav rounded-full px-6 h-16 flex items-center justify-between transition-all">
+      <!-- Right/Brand -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center p-1 overflow-hidden shadow-[0_0_15px_rgba(39,148,244,0.3)] group-hover:scale-105 transition-transform">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <span class="font-bold text-xl md:text-2xl bg-gradient-to-l from-secondary via-primary to-tertiary bg-clip-text text-transparent tracking-tight">
+            MP STORE
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 font-medium text-base text-on-surface-variant">
+        <a href="index.html" class="hover:text-secondary transition-colors py-1">خانه</a>
+        <a href="products.html" class="text-tertiary font-bold border-b-2 border-tertiary pb-0.5 transition-colors">محصولات</a>
+        <a href="products.html?category=all" class="hover:text-secondary transition-colors py-1">دسته‌بندی‌ها</a>
+        <a href="about.html" class="hover:text-secondary transition-colors py-1">درباره ما</a>
+        <a href="contact.html" class="hover:text-secondary transition-colors py-1">تماس با ما</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSearchModal(true)" class="p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="جستجو">
+          <span class="material-symbols-outlined text-2xl">search</span>
+        </button>
+
+        <button onclick="toggleCartDrawer()" class="relative p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="سبد خرید">
+          <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+          <span class="cart-count-badge hidden absolute top-0.5 right-0.5 w-4 h-4 bg-tertiary text-surface-container-lowest rounded-full text-[10px] font-bold flex items-center justify-center">۰</span>
+        </button>
+
+        <a href="https://t.me/Mpstore1388bot" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-container/20 text-secondary border border-secondary/40 hover:bg-secondary-container hover:text-white hover:border-transparent btn-glow-primary transition-all duration-300 text-sm font-semibold">
+          <span class="material-symbols-outlined text-lg">smart_toy</span>
+          <span>خرید از ربات تلگرام</span>
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-on-surface hover:bg-white/5 rounded-full" title="منو">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 md:hidden mt-2 p-4 glass-panel rounded-2xl flex flex-col gap-3 transition-all duration-300 border border-white/10 shadow-2xl">
+      <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">خانه</a>
+      <a href="products.html" class="px-4 py-2 rounded-lg bg-secondary/10 text-secondary font-bold">محصولات</a>
+      <a href="about.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">درباره ما</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">تماس با ما</a>
+      <a href="admin.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-outline text-sm">پنل مدیریت</a>
+      <a href="https://t.me/Mpstore1388bot" target="_blank" class="mt-2 py-3 rounded-xl bg-gradient-to-r from-secondary-container to-inverse-primary text-white text-center font-bold flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">send</span>
+        خرید از ربات تلگرام
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Product Detail -->
+  <main class="flex-grow pt-32 pb-section-gap px-container-margin md:px-12 max-w-7xl mx-auto w-full z-10 relative space-y-16">
+
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-sm text-on-surface-variant">
+      <a href="index.html" class="hover:text-secondary transition-colors">خانه</a>
+      <span class="material-symbols-outlined text-xs">chevron_left</span>
+      <a href="products.html" class="hover:text-secondary transition-colors">محصولات</a>
+      <span class="material-symbols-outlined text-xs">chevron_left</span>
+      <span id="breadcrumb-title" class="text-tertiary font-medium">پکیج جامع هوش مصنوعی</span>
+    </nav>
+
+    <!-- Product Showcase (2-Column Grid matching Stitch Screen 3) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Right Gallery Section (in RTL) -->
+      <div class="lg:col-span-6 space-y-4">
+        <!-- Main Large Preview -->
+        <div class="w-full h-80 sm:h-[420px] rounded-3xl glass-panel p-4 relative overflow-hidden border border-secondary/30 shadow-2xl flex items-center justify-center group">
+          <img 
+            id="main-gallery-image" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZ_izz984B8ebPOqr0V1OTETYQ3FigswrM6r8p5rKTRxwVZHAQUBf68srtoXBWruhvVwIBnCW3ZQch3Apbnnis0n-KBj96w8HjVH6udy_6O3kemjKl_ufTE-hxBY34zYv7qA7z_oUFZ3wauSEmhAcVyRWc9vXV9OJZ43UX3D9poqCMIXSxoNH_0idh4oqgsI4DbfT85P2_sHCjF3-zWs7oIE0rhhFycSU5Rfxo8WFmaSb1pBouaWv" 
+            alt="Product Preview" 
+            class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" 
+          />
+          <div class="absolute top-4 right-4 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-secondary border border-secondary/30">
+            کیفیت اورجینال
+          </div>
+        </div>
+
+        <!-- 4 Interactive Thumbnail Buttons -->
+        <div id="thumbnails-container" class="grid grid-cols-4 gap-3 sm:gap-4">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Left Info & Purchase Section -->
+      <div class="lg:col-span-6 space-y-6">
+        <!-- Badges & Category -->
+        <div class="flex items-center gap-2">
+          <span id="product-type-badge" class="px-3 py-1 rounded-full bg-primary-container text-primary text-xs font-bold">محصول دیجیتال</span>
+          <span id="product-cat-badge" class="px-3 py-1 rounded-full bg-surface-variant text-on-surface text-xs font-medium">هوش مصنوعی</span>
+          <span class="px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-xs font-medium">بهره‌وری</span>
+        </div>
+
+        <!-- Product Title -->
+        <h1 id="product-title" class="text-2xl sm:text-3xl lg:text-4xl font-black text-on-background leading-tight">
+          بسته جامع ابزارهای بهره‌وری هوش مصنوعی
+        </h1>
+
+        <!-- Rating & Reviews -->
+        <div class="flex items-center gap-4 text-sm text-on-surface-variant">
+          <div class="flex items-center gap-1 text-amber-400">
+            <span class="material-symbols-outlined text-lg fill">star</span>
+            <span id="product-rating" class="font-bold text-on-surface">۴.۹</span>
+          </div>
+          <span>•</span>
+          <span id="product-reviews-count">۱۲۸ نظر ثبت شده کاربران</span>
+          <span>•</span>
+          <span class="text-emerald-400 font-medium flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            موجود و آماده تحویل
+          </span>
+        </div>
+
+        <!-- Price Display -->
+        <div class="glass-panel p-5 rounded-2xl flex items-center justify-between border border-white/10">
+          <div>
+            <span class="text-xs text-on-surface-variant block mb-1">قیمت نهایی محصول:</span>
+            <div class="flex items-baseline gap-2">
+              <span id="product-price" class="text-3xl font-black text-secondary">۳۵۰,۰۰۰</span>
+              <span class="text-sm font-medium text-on-surface-variant">تومان</span>
+            </div>
+          </div>
+          <div class="text-left">
+            <span class="text-xs text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 px-2.5 py-1 rounded-full font-semibold">تحویل آنی در تلگرام</span>
+          </div>
+        </div>
+
+        <!-- Short Description -->
+        <p id="product-short-desc" class="text-on-surface-variant text-sm sm:text-base leading-relaxed">
+          دسترسی به بیش از ۵۰ ابزار پیشرفته هوش مصنوعی برای اتوماسیون، تحلیل داده و تولید محتوا.
+        </p>
+
+        <!-- Key Features List -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-sm text-on-surface">ویژگی‌های برجسته محصول:</h3>
+          <div id="features-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Purchase & Order Actions -->
+        <div class="pt-4 space-y-4 border-t border-white/10">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <!-- Quantity Counter -->
+            <div class="flex items-center justify-between bg-surface-container-high border border-outline-variant/30 rounded-xl px-4 py-2 sm:w-36">
+              <button onclick="changeQuantity(1)" class="text-secondary hover:text-white text-lg font-bold p-1">+</button>
+              <span id="quantity-display" class="font-bold text-on-surface">۱</span>
+              <button onclick="changeQuantity(-1)" class="text-on-surface-variant hover:text-white text-lg font-bold p-1">−</button>
+            </div>
+
+            <!-- Primary Telegram CTA -->
+            <button 
+              id="buy-telegram-btn" 
+              onclick="handleTelegramBuy()" 
+              class="flex-1 btn-primary py-3.5 px-6 rounded-xl font-bold flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(39,148,244,0.5)] animate-pulse-glow"
+            >
+              <span class="material-symbols-outlined">send</span>
+              <span>خرید سریع از ربات تلگرام</span>
+            </button>
+          </div>
+
+          <div class="flex gap-3">
+            <button 
+              id="add-to-cart-btn" 
+              onclick="handleAddToCart()" 
+              class="flex-1 btn-secondary py-3 px-6 rounded-xl font-bold flex items-center justify-center gap-2 text-sm"
+            >
+              <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+              <span>افزودن به سبد خرید</span>
+            </button>
+          </div>
+
+          <!-- Guarantee Badge -->
+          <div class="flex items-center justify-center gap-6 pt-2 text-xs text-on-surface-variant">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-secondary text-base">verified</span>
+              <span>تضمین عملکرد ۱۰۰٪</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-tertiary text-base">support_agent</span>
+              <span>پشتیبانی اختصاصی</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-base">security</span>
+              <span>درگاه امن تلگرام</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Product Details Tabs / Content -->
+    <section class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 space-y-8">
+      <!-- Tabs Header -->
+      <div class="flex border-b border-white/10 gap-6 overflow-x-auto hide-scrollbar">
+        <button onclick="switchTab('desc')" id="tab-desc-btn" class="pb-4 font-bold text-base text-secondary border-b-2 border-secondary transition-colors whitespace-nowrap">
+          توضیحات و مشخصات کامل
+        </button>
+        <button onclick="switchTab('guide')" id="tab-guide-btn" class="pb-4 font-medium text-base text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">
+          راهنمای فعال‌سازی در تلگرام
+        </button>
+        <button onclick="switchTab('reviews')" id="tab-reviews-btn" class="pb-4 font-medium text-base text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">
+          نظرات خریداران (۱۲۸)
+        </button>
+      </div>
+
+      <!-- Tab Content: Descriptions -->
+      <div id="tab-content-desc" class="space-y-4 text-on-surface-variant leading-relaxed">
+        <p id="product-full-desc" class="text-base text-on-surface">
+          با این بسته بی‌نظیر، تمام کارهای روزمره خود را به سطح جدیدی از سرعت و دقت ارتقا دهید. این مجموعه شامل پیشرفته‌ترین الگوریتم‌های یادگیری ماشین است که برای اتوماسیون وظایف تکراری، تحلیل داده‌های پیچیده و تولید محتوای خلاقانه طراحی شده‌اند.
+        </p>
+        <div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-surface-container-high border border-white/5 space-y-2">
+            <h4 class="font-bold text-on-surface text-sm flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary">verified</span>
+              سازگاری کامل
+            </h4>
+            <p class="text-xs text-on-surface-variant">سازگار با تمام سیستم‌عامل‌ها، مرورگرهای مدرن و دیوایس‌های هوشمند همراه.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-surface-container-high border border-white/5 space-y-2">
+            <h4 class="font-bold text-on-surface text-sm flex items-center gap-2">
+              <span class="material-symbols-outlined text-tertiary">autorenew</span>
+              آپدیت دائمی
+            </h4>
+            <p class="text-xs text-on-surface-variant">دسترسی رایگان به تمامی به‌روزرسانی‌ها و نسخه‌های جدید در کانال و ربات MP STORE.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Telegram Activation Guide -->
+      <div id="tab-content-guide" class="hidden space-y-6">
+        <h3 class="font-bold text-lg text-on-surface">چگونه این محصول را تحویل بگیرم؟</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="glass-panel p-5 rounded-2xl space-y-2 text-center sm:text-right">
+            <span class="w-8 h-8 rounded-full bg-secondary text-surface-container-lowest font-black flex items-center justify-center mb-2 mx-auto sm:mx-0">۱</span>
+            <h4 class="font-bold text-sm text-on-surface">کلیک روی دکمه خرید</h4>
+            <p class="text-xs text-on-surface-variant">روی دکمه «خرید سریع از ربات تلگرام» کلیک کنید تا ربات اختصاصی باز شود.</p>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl space-y-2 text-center sm:text-right">
+            <span class="w-8 h-8 rounded-full bg-tertiary text-surface-container-lowest font-black flex items-center justify-center mb-2 mx-auto sm:mx-0">۲</span>
+            <h4 class="font-bold text-sm text-on-surface">تأیید سفارش در ربات</h4>
+            <p class="text-xs text-on-surface-variant">دکمه Start را زده و فاکتور خودکار صادر شده را پرداخت کنید.</p>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl space-y-2 text-center sm:text-right">
+            <span class="w-8 h-8 rounded-full bg-primary text-surface-container-lowest font-black flex items-center justify-center mb-2 mx-auto sm:mx-0">۳</span>
+            <h4 class="font-bold text-sm text-on-surface">تحویل آنی فایل‌ها</h4>
+            <p class="text-xs text-on-surface-variant">فایل‌ها، لایسنس یا کد رهگیری فیزیکی بلافاصله در چت تلگرام ارسال می‌گردد.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Reviews -->
+      <div id="tab-content-reviews" class="hidden space-y-6">
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl glass-panel border border-white/5 space-y-2">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-on-surface">رضا مهدوی</span>
+                <span class="text-xs text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">خریدار تایید شده</span>
+              </div>
+              <div class="flex text-amber-400 text-sm">
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+              </div>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">کیفیت پرامپت‌ها و ابزارهای هوش مصنوعی فوق‌العاده بود. سرعت ربات تلگرام هم واقعاً تحسین‌برانگیزه، در کمتر از ۵ ثانیه فایل ارسال شد.</p>
+          </div>
+
+          <div class="p-4 rounded-xl glass-panel border border-white/5 space-y-2">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-on-surface">سارا افشار</span>
+                <span class="text-xs text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">خریدار تایید شده</span>
+              </div>
+              <div class="flex text-amber-400 text-sm">
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+                <span class="material-symbols-outlined text-sm fill">star</span>
+              </div>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">طراحی قالب و کدنویسی بسیار تمیز و استاندارد بود. پشتیبانی در تلگرام هم خیلی سریع و با احترام راهنمایی کردند.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-black text-on-background">محصولات مرتبط و پیشنهادی</h2>
+      <div id="related-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full rounded-t-3xl mt-section-gap border-t border-outline-variant/10 flex flex-col items-center py-16 px-container-margin bg-gradient-to-b from-transparent to-surface-container bg-surface-container-lowest text-secondary font-body-md z-10 relative">
+    <div class="flex flex-col items-center gap-6 mb-8 w-full max-w-5xl">
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE" class="w-10 h-10 rounded-full grayscale opacity-80" />
+        <span class="text-2xl font-black tracking-tight text-secondary">MP STORE</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full text-on-surface-variant text-sm">
+        <a href="contact.html" class="hover:text-tertiary transition-colors">تماس با ما</a>
+        <a href="contact.html#faq" class="hover:text-tertiary transition-colors">سوالات متداول</a>
+        <a href="about.html" class="hover:text-tertiary transition-colors">درباره ما</a>
+        <a href="contact.html" class="hover:text-tertiary transition-colors">شرایط و قوانین</a>
+        <a href="admin.html" class="hover:text-secondary transition-colors text-outline">ورود مدیریت</a>
+      </div>
+    </div>
+    <div class="text-center text-outline text-xs border-t border-white/5 pt-6 w-full max-w-5xl opacity-75">
+      © ۲۰۲۴ تمامی حقوق برای MP STORE محفوظ است. طراحی شده با عشق در دنیای دیجیتال.
+    </div>
+  </footer>
+
+  <!-- Search Modal Overlay -->
+  <div id="search-modal" class="fixed inset-0 z-[100] bg-background/90 backdrop-blur-2xl hidden items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 relative border border-secondary/30 shadow-2xl">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+        <div class="flex items-center gap-2 text-secondary font-bold text-lg">
+          <span class="material-symbols-outlined">search</span>
+          <span>جستجو در محصولات MP STORE</span>
+        </div>
+        <button onclick="toggleSearchModal(false)" class="text-on-surface-variant hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <div class="relative mb-6">
+        <input 
+          type="text" 
+          id="global-search-input" 
+          placeholder="نام محصول مورد نظر را بنویسید..." 
+          class="w-full bg-surface-container-high/80 border border-outline-variant/30 rounded-xl py-3 pr-4 pl-12 text-on-surface focus:outline-none focus:border-secondary transition-colors"
+          oninput="handleSearchDetail(this.value)"
+        />
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+      </div>
+
+      <div id="search-results" class="max-h-72 overflow-y-auto space-y-3 pr-1">
+        <p class="text-xs text-on-surface-variant text-center py-6">کلمه‌ای برای جستجو تایپ کنید...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div id="cart-drawer" class="fixed inset-0 z-[100] bg-background/80 backdrop-blur-md hidden justify-start">
+    <div class="w-full max-w-md bg-surface-container-low h-full border-l border-white/10 p-6 flex flex-col justify-between shadow-2xl animate-in slide-in-from-right">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div class="flex items-center gap-2 text-secondary font-bold text-lg">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span>سبد خرید شما</span>
+          </div>
+          <button onclick="toggleCartDrawer()" class="text-on-surface-variant hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div id="cart-items-list" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-on-surface-variant text-sm">مجموع سبد:</span>
+          <span id="cart-total-price" class="text-xl font-bold text-secondary">۰ تومان</span>
+        </div>
+        <button onclick="checkoutCartTelegram()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-secondary-container to-inverse-primary text-white font-bold flex items-center justify-center gap-2 btn-glow-primary">
+          <span class="material-symbols-outlined">send</span>
+          <span>ثبت و تکمیل سفارش در تلگرام</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    let currentProduct = null;
+    let currentQuantity = 1;
+
+    function initProductDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'ai-copilot-pro';
+      currentProduct = getProductById(productId);
+
+      if (!currentProduct) {
+        currentProduct = getStoredProducts()[0];
+      }
+
+      // Update Page Content
+      document.title = `${currentProduct.title} | MP STORE`;
+      document.getElementById('breadcrumb-title').textContent = currentProduct.shortTitle || currentProduct.title;
+      document.getElementById('product-title').textContent = currentProduct.title;
+      document.getElementById('product-price').textContent = toPersianDigits(currentProduct.price);
+      document.getElementById('product-short-desc').textContent = currentProduct.shortDesc;
+      document.getElementById('product-full-desc').textContent = currentProduct.fullDesc || currentProduct.shortDesc;
+      document.getElementById('product-rating').textContent = toPersianDigits(currentProduct.rating);
+      document.getElementById('product-reviews-count').textContent = `${toPersianDigits(currentProduct.reviewsCount || 85)} نظر ثبت شده کاربران`;
+
+      // Badges
+      const typeBadge = document.getElementById('product-type-badge');
+      typeBadge.textContent = currentProduct.type === 'digital' ? 'محصول دیجیتال' : 'محصول فیزیکی';
+      typeBadge.className = currentProduct.type === 'digital' 
+        ? 'px-3 py-1 rounded-full bg-primary-container text-primary text-xs font-bold'
+        : 'px-3 py-1 rounded-full bg-surface-variant text-on-surface text-xs font-bold border border-outline/30';
+
+      document.getElementById('product-cat-badge').textContent = currentProduct.categoryName || 'محصولات';
+
+      // Gallery & Thumbnails
+      const mainImg = document.getElementById('main-gallery-image');
+      mainImg.src = currentProduct.image;
+
+      const galleryImages = currentProduct.gallery && currentProduct.gallery.length > 0
+        ? currentProduct.gallery
+        : [currentProduct.image, currentProduct.image, currentProduct.image, currentProduct.image];
+
+      // Ensure 4 thumbnails for visual completeness
+      while (galleryImages.length < 4) {
+        galleryImages.push(galleryImages[0]);
+      }
+
+      const thumbsContainer = document.getElementById('thumbnails-container');
+      thumbsContainer.innerHTML = galleryImages.slice(0, 4).map((imgUrl, index) => `
+        <button 
+          onclick="selectGalleryImage('${imgUrl}', this)" 
+          class="gallery-thumb-btn h-16 sm:h-20 rounded-xl glass-panel overflow-hidden border ${index === 0 ? 'border-secondary shadow-[0_0_12px_rgba(39,148,244,0.4)]' : 'border-white/10 opacity-70'} hover:opacity-100 transition-all p-1"
+        >
+          <img src="${imgUrl}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover rounded-lg" />
+        </button>
+      `).join('');
+
+      // Features
+      const featuresContainer = document.getElementById('features-list');
+      const features = currentProduct.features || [
+        { icon: "speed", title: "سرعت و عملکرد بالا" },
+        { icon: "verified", title: "کیفیت تضمین شده" },
+        { icon: "cloud_sync", title: "دسترسی و همگام‌سازی فوری" },
+        { icon: "support", title: "پشتیبانی کامل در تلگرام" }
+      ];
+
+      featuresContainer.innerHTML = features.map(f => `
+        <div class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high/60 border border-white/5">
+          <span class="material-symbols-outlined text-secondary text-lg">${f.icon}</span>
+          <span class="text-xs text-on-surface font-medium">${f.title}</span>
+        </div>
+      `).join('');
+
+      // Related Products
+      renderRelatedProducts();
+    }
+
+    function selectGalleryImage(imgUrl, btnElement) {
+      document.getElementById('main-gallery-image').src = imgUrl;
+      document.querySelectorAll('.gallery-thumb-btn').forEach(btn => {
+        btn.classList.remove('border-secondary', 'shadow-[0_0_12px_rgba(39,148,244,0.4)]');
+        btn.classList.add('border-white/10', 'opacity-70');
+      });
+      btnElement.classList.remove('border-white/10', 'opacity-70');
+      btnElement.classList.add('border-secondary', 'shadow-[0_0_12px_rgba(39,148,244,0.4)]');
+    }
+
+    function changeQuantity(delta) {
+      currentQuantity = Math.max(1, currentQuantity + delta);
+      document.getElementById('quantity-display').textContent = toPersianDigits(currentQuantity);
+    }
+
+    function handleTelegramBuy() {
+      if (!currentProduct) return;
+      orderViaTelegram(currentProduct.id, currentProduct.title);
+    }
+
+    function handleAddToCart() {
+      if (!currentProduct) return;
+      addToCart(currentProduct, currentQuantity);
+    }
+
+    function switchTab(tabKey) {
+      ['desc', 'guide', 'reviews'].forEach(key => {
+        const btn = document.getElementById(`tab-${key}-btn`);
+        const content = document.getElementById(`tab-content-${key}`);
+        if (key === tabKey) {
+          btn.classList.add('text-secondary', 'border-b-2', 'border-secondary', 'font-bold');
+          btn.classList.remove('text-on-surface-variant', 'font-medium');
+          content.classList.remove('hidden');
+        } else {
+          btn.classList.remove('text-secondary', 'border-b-2', 'border-secondary', 'font-bold');
+          btn.classList.add('text-on-surface-variant', 'font-medium');
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    function renderRelatedProducts() {
+      const allProducts = getStoredProducts();
+      const related = allProducts.filter(p => p.id !== currentProduct.id).slice(0, 4);
+      const container = document.getElementById('related-products-grid');
+      if (!container) return;
+
+      container.innerHTML = related.map(p => `
+        <article class="glass-panel rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 border border-white/10">
+          <div class="h-40 w-full overflow-hidden relative p-3">
+            <a href="product-detail.html?id=${p.id}" class="block w-full h-full">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform" />
+            </a>
+          </div>
+          <div class="p-4 flex flex-col flex-grow">
+            <h4 class="font-bold text-sm text-on-surface group-hover:text-secondary truncate">
+              <a href="product-detail.html?id=${p.id}">${p.title}</a>
+            </h4>
+            <div class="flex justify-between items-center mt-3 pt-2 border-t border-white/10">
+              <span class="text-xs font-bold text-tertiary">${toPersianDigits(p.price)} تومان</span>
+              <a href="product-detail.html?id=${p.id}" class="text-xs text-secondary hover:text-white flex items-center">
+                <span>مشاهده</span>
+                <span class="material-symbols-outlined text-sm">chevron_left</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function handleSearchDetail(query) {
+      const resultsContainer = document.getElementById('search-results');
+      if (!query || query.trim() === '') {
+        resultsContainer.innerHTML = '<p class="text-xs text-on-surface-variant text-center py-6">کلمه‌ای برای جستجو تایپ کنید...</p>';
+        return;
+      }
+      const products = getStoredProducts();
+      const q = query.toLowerCase().trim();
+      const filtered = products.filter(p => p.title.toLowerCase().includes(q) || p.shortDesc.toLowerCase().includes(q));
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-sm text-on-surface-variant text-center py-6">محصولی یافت نشد.</p>';
+        return;
+      }
+      resultsContainer.innerHTML = filtered.map(p => `
+        <a href="product-detail.html?id=${p.id}" class="flex items-center gap-3 p-3 glass-panel rounded-xl hover:border-secondary/50 transition-colors block">
+          <img src="${p.image}" alt="${p.title}" class="w-12 h-12 object-cover rounded-lg border border-white/10" />
+          <div class="flex-1 min-w-0">
+            <h4 class="font-medium text-sm text-on-surface truncate">${p.title}</h4>
+            <span class="text-xs text-secondary font-bold">${toPersianDigits(p.price)} تومان</span>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_left</span>
+        </a>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', initProductDetail);
+  </script>
+</body>
+</html>

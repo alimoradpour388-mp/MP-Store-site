@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>محصولات | MP STORE - فروشگاه هوشمند دیجیتال</title>
+  
+  <!-- Google Fonts: Vazirmatn & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#959bff",
+            "surface-container-low": "#1b1b22",
+            "on-secondary": "#00325a",
+            "surface-container": "#1f1f27",
+            "outline-variant": "#464654",
+            "inverse-primary": "#494fca",
+            "on-tertiary-fixed": "#2e004d",
+            "on-background": "#e4e1ec",
+            "secondary-container": "#2794f4",
+            "tertiary": "#e1b6ff",
+            "on-tertiary-fixed-variant": "#6918a1",
+            "surface-container-lowest": "#0d0e15",
+            "on-tertiary": "#4c007b",
+            "on-secondary-container": "#002b4f",
+            "surface-container-high": "#292931",
+            "outline": "#908f9f",
+            "on-error-container": "#ffdad6",
+            "primary": "#bfc1ff",
+            "surface": "#13131a",
+            "on-primary-fixed": "#02006d",
+            "tertiary-fixed": "#f2daff",
+            "secondary-fixed-dim": "#a0c9ff",
+            "on-secondary-fixed": "#001c37",
+            "surface-variant": "#34343c",
+            "tertiary-fixed-dim": "#e1b6ff",
+            "primary-fixed": "#e1e0ff",
+            "secondary": "#a0c9ff",
+            "surface-bright": "#393841",
+            "surface-tint": "#bfc1ff",
+            "error": "#ffb4ab",
+            "on-error": "#690005",
+            "on-surface": "#e4e1ec",
+            "background": "#13131a",
+            "primary-fixed-dim": "#bfc1ff",
+            "primary-container": "#2023a5",
+            "on-surface-variant": "#c6c5d6",
+            "on-primary": "#12129c",
+            "surface-container-highest": "#34343c",
+            "inverse-surface": "#e4e1ec",
+            "on-tertiary-container": "#cb86ff",
+            "on-primary-fixed-variant": "#2f34b1",
+            "error-container": "#93000a",
+            "on-secondary-fixed-variant": "#00487f",
+            "inverse-on-surface": "#303038",
+            "tertiary-container": "#5a0091",
+            "surface-dim": "#13131a",
+            "secondary-fixed": "#d2e4ff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "2rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "base": "8px",
+            "gutter": "16px",
+            "container-margin": "24px",
+            "card-padding": "20px",
+            "section-gap": "80px"
+          },
+          fontFamily: {
+            "headline-md": ["Vazirmatn", "sans-serif"],
+            "title-lg": ["Vazirmatn", "sans-serif"],
+            "body-md": ["Vazirmatn", "sans-serif"],
+            "display-lg": ["Vazirmatn", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen aurora-bg flex flex-col relative overflow-x-hidden bg-grid-pattern">
+
+  <!-- Aurora Blobs -->
+  <div class="aurora-blob bg-secondary-container/10 w-[600px] h-[600px] top-[-5%] right-[-5%]"></div>
+  <div class="aurora-blob bg-tertiary-container/10 w-[500px] h-[500px] bottom-[20%] left-[-10%]"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-4 inset-x-4 z-50 max-w-7xl mx-auto">
+    <nav class="glass-nav rounded-full px-6 h-16 flex items-center justify-between transition-all">
+      <!-- Right/Brand -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center p-1 overflow-hidden shadow-[0_0_15px_rgba(39,148,244,0.3)] group-hover:scale-105 transition-transform">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <span class="font-bold text-xl md:text-2xl bg-gradient-to-l from-secondary via-primary to-tertiary bg-clip-text text-transparent tracking-tight">
+            MP STORE
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 font-medium text-base text-on-surface-variant">
+        <a href="index.html" class="hover:text-secondary transition-colors py-1">خانه</a>
+        <a href="products.html" class="text-tertiary font-bold border-b-2 border-tertiary pb-0.5 transition-colors">محصولات</a>
+        <a href="products.html?category=all" class="hover:text-secondary transition-colors py-1">دسته‌بندی‌ها</a>
+        <a href="about.html" class="hover:text-secondary transition-colors py-1">درباره ما</a>
+        <a href="contact.html" class="hover:text-secondary transition-colors py-1">تماس با ما</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Search Trigger -->
+        <button onclick="toggleSearchModal(true)" class="p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="جستجو">
+          <span class="material-symbols-outlined text-2xl">search</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button onclick="toggleCartDrawer()" class="relative p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="سبد خرید">
+          <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+          <span class="cart-count-badge hidden absolute top-0.5 right-0.5 w-4 h-4 bg-tertiary text-surface-container-lowest rounded-full text-[10px] font-bold flex items-center justify-center">۰</span>
+        </button>
+
+        <!-- Telegram Action Button -->
+        <a href="https://t.me/Mpstore1388bot" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-container/20 text-secondary border border-secondary/40 hover:bg-secondary-container hover:text-white hover:border-transparent btn-glow-primary transition-all duration-300 text-sm font-semibold">
+          <span class="material-symbols-outlined text-lg">smart_toy</span>
+          <span>خرید از ربات تلگرام</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-on-surface hover:bg-white/5 rounded-full" title="منو">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 md:hidden mt-2 p-4 glass-panel rounded-2xl flex flex-col gap-3 transition-all duration-300 border border-white/10 shadow-2xl">
+      <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">خانه</a>
+      <a href="products.html" class="px-4 py-2 rounded-lg bg-secondary/10 text-secondary font-bold">محصولات</a>
+      <a href="about.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">درباره ما</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">تماس با ما</a>
+      <a href="admin.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-outline text-sm">ورود مدیریت</a>
+      <a href="https://t.me/Mpstore1388bot" target="_blank" class="mt-2 py-3 rounded-xl bg-gradient-to-r from-secondary-container to-inverse-primary text-white text-center font-bold flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">send</span>
+        خرید از ربات تلگرام
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-32 pb-section-gap px-container-margin md:px-12 max-w-7xl mx-auto w-full z-10 relative">
+
+    <!-- Page Header -->
+    <header class="mb-10 text-center md:text-right flex flex-col gap-3">
+      <h1 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-l from-white via-primary-fixed to-secondary">
+        کاوش در دنیای دیجیتال
+      </h1>
+      <p class="text-on-surface-variant max-w-2xl text-base leading-relaxed">
+        جدیدترین ابزارهای هوش مصنوعی، گجت‌های تکنولوژی و قالب‌های حرفه‌ای را در خلاء دیجیتال MP Store کشف کنید.
+      </p>
+    </header>
+
+    <!-- Control Bar (Filters & Search) -->
+    <section class="glass-panel rounded-2xl p-4 mb-10 flex flex-col lg:flex-row gap-4 justify-between items-center z-10 relative border border-white/10 shadow-xl">
+      <!-- Search Input -->
+      <div class="relative w-full lg:w-1/3">
+        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+        <input 
+          type="text" 
+          id="products-search-input" 
+          placeholder="جستجو در نام و توضیحات محصولات..." 
+          class="w-full bg-surface-container-high/80 border border-outline-variant/30 rounded-xl py-2.5 pr-10 pl-4 text-on-surface text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all"
+          oninput="applyFilters()"
+        />
+      </div>
+
+      <!-- Filters Group -->
+      <div class="flex flex-wrap lg:flex-nowrap w-full lg:w-auto gap-3 items-center justify-between lg:justify-end overflow-x-auto pb-1 lg:pb-0 hide-scrollbar">
+        <!-- Category Dropdown -->
+        <div class="relative min-w-[140px]">
+          <select 
+            id="category-filter" 
+            onchange="applyFilters()"
+            class="w-full appearance-none bg-surface-container-high/80 border border-outline-variant/30 rounded-xl py-2.5 px-4 pr-9 text-on-surface text-sm focus:outline-none focus:border-secondary cursor-pointer"
+          >
+            <option value="all">همه دسته‌ها</option>
+            <option value="ai">هوش مصنوعی</option>
+            <option value="gadgets">گجت‌ها</option>
+            <option value="templates">قالب‌ها و کد</option>
+            <option value="audio">لوازم صوتی</option>
+            <option value="education">آموزش</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-base">expand_more</span>
+        </div>
+
+        <!-- Digital vs Physical Type Toggle -->
+        <div class="flex bg-surface-container-high/80 border border-outline-variant/30 rounded-xl p-1 min-w-[210px]">
+          <button id="type-all-btn" onclick="setTypeFilter('all')" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-secondary/20 text-secondary font-bold text-xs transition-colors">همه</button>
+          <button id="type-digital-btn" onclick="setTypeFilter('digital')" class="flex-1 text-center py-1.5 px-2 rounded-lg text-on-surface-variant hover:text-on-surface font-medium text-xs transition-colors">دیجیتال</button>
+          <button id="type-physical-btn" onclick="setTypeFilter('physical')" class="flex-1 text-center py-1.5 px-2 rounded-lg text-on-surface-variant hover:text-on-surface font-medium text-xs transition-colors">فیزیکی</button>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="relative min-w-[150px]">
+          <select 
+            id="sort-filter" 
+            onchange="applyFilters()"
+            class="w-full appearance-none bg-surface-container-high/80 border border-outline-variant/30 rounded-xl py-2.5 px-4 pr-9 text-on-surface text-sm focus:outline-none focus:border-secondary cursor-pointer"
+          >
+            <option value="newest">جدیدترین‌ها</option>
+            <option value="price-asc">ارزان‌ترین</option>
+            <option value="price-desc">گران‌ترین</option>
+            <option value="rating">محبوب‌ترین</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-secondary pointer-events-none text-base">sort</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid Container -->
+    <section id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Dynamically generated or populated -->
+    </section>
+
+    <!-- Empty State -->
+    <div id="no-products-msg" class="hidden py-20 text-center space-y-4">
+      <div class="w-16 h-16 rounded-full bg-surface-container mx-auto flex items-center justify-center text-outline">
+        <span class="material-symbols-outlined text-3xl">search_off</span>
+      </div>
+      <h3 class="text-xl font-bold text-on-surface">محصولی مطابق با فیلترهای شما یافت نشد!</h3>
+      <p class="text-on-surface-variant text-sm">لطفاً عبارت دیگری را جستجو کرده یا فیلترها را ریست کنید.</p>
+      <button onclick="resetFilters()" class="btn-secondary px-6 py-2 rounded-xl text-sm font-bold mt-2">
+        نمایش همه محصولات
+      </button>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div id="pagination-controls" class="mt-14 flex justify-center items-center gap-2">
+      <button onclick="goToPage(currentPage - 1)" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="قبلی">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+      <div id="page-numbers" class="flex items-center gap-2">
+        <!-- Injected via JS -->
+      </div>
+      <button onclick="goToPage(currentPage + 1)" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors" title="بعدی">
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full rounded-t-3xl mt-section-gap border-t border-outline-variant/10 flex flex-col items-center py-16 px-container-margin bg-gradient-to-b from-transparent to-surface-container bg-surface-container-lowest text-secondary font-body-md z-10 relative">
+    <div class="flex flex-col items-center gap-6 mb-8 w-full max-w-5xl">
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE" class="w-10 h-10 rounded-full grayscale opacity-80" />
+        <span class="text-2xl font-black tracking-tight text-secondary">MP STORE</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full text-on-surface-variant text-sm">
+        <a href="contact.html" class="hover:text-tertiary transition-colors">تماس با ما</a>
+        <a href="contact.html#faq" class="hover:text-tertiary transition-colors">سوالات متداول</a>
+        <a href="about.html" class="hover:text-tertiary transition-colors">درباره ما</a>
+        <a href="contact.html" class="hover:text-tertiary transition-colors">شرایط و قوانین</a>
+        <a href="admin.html" class="hover:text-secondary transition-colors text-outline">ورود مدیریت</a>
+      </div>
+    </div>
+    <div class="text-center text-outline text-xs border-t border-white/5 pt-6 w-full max-w-5xl opacity-75">
+      © ۲۰۲۴ تمامی حقوق برای MP STORE محفوظ است. طراحی شده با عشق در دنیای دیجیتال.
+    </div>
+  </footer>
+
+  <!-- Search Modal Overlay -->
+  <div id="search-modal" class="fixed inset-0 z-[100] bg-background/90 backdrop-blur-2xl hidden items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 relative border border-secondary/30 shadow-2xl">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+        <div class="flex items-center gap-2 text-secondary font-bold text-lg">
+          <span class="material-symbols-outlined">search</span>
+          <span>جستجو در محصولات MP STORE</span>
+        </div>
+        <button onclick="toggleSearchModal(false)" class="text-on-surface-variant hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+
+      <div class="relative mb-6">
+        <input 
+          type="text" 
+          id="global-search-input" 
+          placeholder="نام محصول مورد نظر را بنویسید..." 
+          class="w-full bg-surface-container-high/80 border border-outline-variant/30 rounded-xl py-3 pr-4 pl-12 text-on-surface focus:outline-none focus:border-secondary transition-colors"
+          oninput="handleLiveSearchModal(this.value)"
+        />
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+      </div>
+
+      <div id="search-results" class="max-h-72 overflow-y-auto space-y-3 pr-1">
+        <p class="text-xs text-on-surface-variant text-center py-6">کلمه‌ای برای جستجو تایپ کنید...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer Overlay -->
+  <div id="cart-drawer" class="fixed inset-0 z-[100] bg-background/80 backdrop-blur-md hidden justify-start">
+    <div class="w-full max-w-md bg-surface-container-low h-full border-l border-white/10 p-6 flex flex-col justify-between shadow-2xl animate-in slide-in-from-right">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div class="flex items-center gap-2 text-secondary font-bold text-lg">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span>سبد خرید شما</span>
+          </div>
+          <button onclick="toggleCartDrawer()" class="text-on-surface-variant hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div id="cart-items-list" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-on-surface-variant text-sm">مجموع سبد:</span>
+          <span id="cart-total-price" class="text-xl font-bold text-secondary">۰ تومان</span>
+        </div>
+        <button onclick="checkoutCartTelegram()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-secondary-container to-inverse-primary text-white font-bold flex items-center justify-center gap-2 btn-glow-primary">
+          <span class="material-symbols-outlined">send</span>
+          <span>ثبت و تکمیل سفارش در تلگرام</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    let currentTypeFilter = 'all';
+    let currentPage = 1;
+    const itemsPerPage = 8;
+    let filteredProducts = [];
+
+    function setTypeFilter(type) {
+      currentTypeFilter = type;
+      document.querySelectorAll('#type-all-btn, #type-digital-btn, #type-physical-btn').forEach(btn => {
+        btn.classList.remove('bg-secondary/20', 'text-secondary', 'font-bold');
+        btn.classList.add('text-on-surface-variant', 'font-medium');
+      });
+
+      const activeBtn = document.getElementById(`type-${type}-btn`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-on-surface-variant', 'font-medium');
+        activeBtn.classList.add('bg-secondary/20', 'text-secondary', 'font-bold');
+      }
+
+      currentPage = 1;
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const allProducts = getStoredProducts();
+      const searchQuery = (document.getElementById('products-search-input').value || '').toLowerCase().trim();
+      const selectedCategory = document.getElementById('category-filter').value;
+      const sortBy = document.getElementById('sort-filter').value;
+
+      filteredProducts = allProducts.filter(p => {
+        const matchesQuery = !searchQuery || 
+          p.title.toLowerCase().includes(searchQuery) || 
+          p.shortDesc.toLowerCase().includes(searchQuery) ||
+          p.categoryName.toLowerCase().includes(searchQuery);
+
+        const matchesType = currentTypeFilter === 'all' || p.type === currentTypeFilter;
+        const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
+
+        return matchesQuery && matchesType && matchesCategory;
+      });
+
+      // Sorting
+      if (sortBy === 'price-asc') {
+        filteredProducts.sort((a, b) => a.rawPrice - b.rawPrice);
+      } else if (sortBy === 'price-desc') {
+        filteredProducts.sort((a, b) => b.rawPrice - a.rawPrice);
+      } else if (sortBy === 'rating') {
+        filteredProducts.sort((a, b) => b.rating - a.rating);
+      }
+
+      renderProductsGrid();
+      renderPagination();
+    }
+
+    function renderProductsGrid() {
+      const grid = document.getElementById('products-grid');
+      const noMsg = document.getElementById('no-products-msg');
+      const pagControls = document.getElementById('pagination-controls');
+
+      if (filteredProducts.length === 0) {
+        grid.innerHTML = '';
+        noMsg.classList.remove('hidden');
+        pagControls.classList.add('hidden');
+        return;
+      }
+
+      noMsg.classList.add('hidden');
+      pagControls.classList.remove('hidden');
+
+      const startIdx = (currentPage - 1) * itemsPerPage;
+      const paginatedItems = filteredProducts.slice(startIdx, startIdx + itemsPerPage);
+
+      grid.innerHTML = paginatedItems.map(p => {
+        const badgeColorClass = p.type === 'digital' 
+          ? 'bg-primary-container text-primary' 
+          : 'bg-surface-variant text-on-surface border border-outline/30';
+        const typeLabel = p.type === 'digital' ? 'دیجیتال' : 'فیزیکی';
+
+        return `
+          <article class="glass-panel rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 relative border border-white/10">
+            <div class="h-48 w-full overflow-hidden relative p-3">
+              <a href="product-detail.html?id=${p.id}" class="block w-full h-full">
+                <img 
+                  src="${p.image}" 
+                  alt="${p.title}" 
+                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" 
+                />
+              </a>
+              <span class="absolute top-5 left-5 ${badgeColorClass} text-xs px-2.5 py-1 rounded-full font-medium backdrop-blur-md">
+                ${typeLabel}
+              </span>
+            </div>
+
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-base text-on-surface group-hover:text-secondary transition-colors">
+                  <a href="product-detail.html?id=${p.id}">${p.title}</a>
+                </h3>
+              </div>
+              <p class="text-on-surface-variant text-xs mb-4 flex-grow line-clamp-2 leading-relaxed">
+                ${p.shortDesc}
+              </p>
+
+              <div class="flex justify-between items-center mt-auto pt-3 border-t border-outline-variant/20">
+                <div class="flex flex-col">
+                  <span class="text-[11px] text-on-surface-variant">قیمت:</span>
+                  <span class="text-tertiary font-bold text-sm sm:text-base">${toPersianDigits(p.price)} <span class="text-xs text-on-surface-variant font-normal">تومان</span></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button onclick="addToCart({id: '${p.id}', title: '${p.title}', price: '${p.price}', rawPrice: ${p.rawPrice}, image: '${p.image}'})" class="p-2 rounded-lg bg-white/10 hover:bg-secondary hover:text-surface-container-lowest text-secondary transition-colors" title="افزودن به سبد">
+                    <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
+                  </button>
+                  <a href="https://t.me/Mpstore1388bot" target="_blank" class="btn-glow-primary text-white rounded-lg px-3.5 py-1.5 text-xs font-bold flex items-center gap-1 scale-98 active:scale-95 transition-all">
+                    <span class="material-symbols-outlined text-sm">send</span>
+                    <span>خرید</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderPagination() {
+      const pageNumbersContainer = document.getElementById('page-numbers');
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+      
+      let html = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const isActive = i === currentPage;
+        html += `
+          <button 
+            onclick="goToPage(${i})" 
+            class="w-10 h-10 rounded-full font-bold text-sm flex items-center justify-center transition-all ${isActive ? 'bg-secondary text-surface-container-lowest shadow-[0_0_12px_rgba(39,148,244,0.6)]' : 'glass-panel text-on-surface-variant hover:text-secondary'}"
+          >
+            ${toPersianDigits(i)}
+          </button>
+        `;
+      }
+      pageNumbersContainer.innerHTML = html;
+    }
+
+    function goToPage(page) {
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+      if (page < 1 || page > totalPages) return;
+      currentPage = page;
+      renderProductsGrid();
+      renderPagination();
+      window.scrollTo({ top: 180, behavior: 'smooth' });
+    }
+
+    function resetFilters() {
+      document.getElementById('products-search-input').value = '';
+      document.getElementById('category-filter').value = 'all';
+      document.getElementById('sort-filter').value = 'newest';
+      setTypeFilter('all');
+    }
+
+    function handleLiveSearchModal(query) {
+      const resultsContainer = document.getElementById('search-results');
+      if (!query || query.trim() === '') {
+        resultsContainer.innerHTML = '<p class="text-xs text-on-surface-variant text-center py-6">کلمه‌ای برای جستجو تایپ کنید...</p>';
+        return;
+      }
+      const products = getStoredProducts();
+      const q = query.toLowerCase().trim();
+      const filtered = products.filter(p => p.title.toLowerCase().includes(q) || p.shortDesc.toLowerCase().includes(q));
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-sm text-on-surface-variant text-center py-6">محصولی یافت نشد.</p>';
+        return;
+      }
+      resultsContainer.innerHTML = filtered.map(p => `
+        <a href="product-detail.html?id=${p.id}" class="flex items-center gap-3 p-3 glass-panel rounded-xl hover:border-secondary/50 transition-colors block">
+          <img src="${p.image}" alt="${p.title}" class="w-12 h-12 object-cover rounded-lg border border-white/10" />
+          <div class="flex-1 min-w-0">
+            <h4 class="font-medium text-sm text-on-surface truncate">${p.title}</h4>
+            <span class="text-xs text-secondary font-bold">${toPersianDigits(p.price)} تومان</span>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_left</span>
+        </a>
+      `).join('');
+    }
+
+    // Check URL parameters for category filtering on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const cat = urlParams.get('category');
+      if (cat && cat !== 'all') {
+        const catSelect = document.getElementById('category-filter');
+        if (catSelect) catSelect.value = cat;
+      }
+      applyFilters();
+    });
+  </script>
+</body>
+</html>

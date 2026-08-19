@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>تماس و ثبت تیکت پشتیبانی | MP STORE</title>
+  
+  <!-- Google Fonts: Vazirmatn & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#959bff",
+            "surface-container-low": "#1b1b22",
+            "on-secondary": "#00325a",
+            "surface-container": "#1f1f27",
+            "outline-variant": "#464654",
+            "inverse-primary": "#494fca",
+            "on-tertiary-fixed": "#2e004d",
+            "on-background": "#e4e1ec",
+            "secondary-container": "#2794f4",
+            "tertiary": "#e1b6ff",
+            "surface-container-lowest": "#0d0e15",
+            "surface-container-high": "#292931",
+            "outline": "#908f9f",
+            "primary": "#bfc1ff",
+            "surface": "#13131a",
+            "secondary": "#a0c9ff",
+            "on-surface": "#e4e1ec",
+            "background": "#13131a",
+            "on-surface-variant": "#c6c5d6"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "2rem"
+          },
+          spacing: {
+            "section-gap": "80px",
+            "container-margin": "24px"
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen aurora-bg flex flex-col relative overflow-x-hidden bg-grid-pattern">
+
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-4 inset-x-4 z-50 max-w-7xl mx-auto">
+    <nav class="glass-nav rounded-full px-6 h-16 flex items-center justify-between transition-all">
+      <!-- Right/Brand -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center p-1 overflow-hidden shadow-[0_0_15px_rgba(39,148,244,0.3)] group-hover:scale-105 transition-transform">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <span class="font-bold text-xl md:text-2xl bg-gradient-to-l from-secondary via-primary to-tertiary bg-clip-text text-transparent tracking-tight">
+            MP STORE
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 font-medium text-base text-on-surface-variant">
+        <a href="index.html" class="hover:text-secondary transition-colors py-1">خانه</a>
+        <a href="products.html" class="hover:text-secondary transition-colors py-1">محصولات</a>
+        <a href="products.html?category=all" class="hover:text-secondary transition-colors py-1">دسته‌بندی‌ها</a>
+        <a href="about.html" class="hover:text-secondary transition-colors py-1">درباره ما</a>
+        <a href="contact.html" class="text-tertiary font-bold border-b-2 border-tertiary pb-0.5 transition-colors">تماس و تیکت پشتیبانی</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSearchModal(true)" class="p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="جستجو">
+          <span class="material-symbols-outlined text-2xl">search</span>
+        </button>
+
+        <button onclick="toggleCartDrawer()" class="relative p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="سبد خرید">
+          <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+          <span class="cart-count-badge hidden absolute top-0.5 right-0.5 w-4 h-4 bg-tertiary text-surface-container-lowest rounded-full text-[10px] font-bold flex items-center justify-center">۰</span>
+        </button>
+
+        <a href="https://t.me/Mpstore1388bot" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-container/20 text-secondary border border-secondary/40 hover:bg-secondary-container hover:text-white hover:border-transparent btn-glow-primary transition-all duration-300 text-sm font-semibold">
+          <span class="material-symbols-outlined text-lg">smart_toy</span>
+          <span>خرید از ربات تلگرام</span>
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-on-surface hover:bg-white/5 rounded-full" title="منو">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 md:hidden mt-2 p-4 glass-panel rounded-2xl flex flex-col gap-3 transition-all duration-300 border border-white/10 shadow-2xl">
+      <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">خانه</a>
+      <a href="products.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">محصولات</a>
+      <a href="about.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">درباره ما</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg bg-secondary/10 text-secondary font-bold">تماس و تیکت پشتیبانی</a>
+      <a href="admin.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-outline text-sm">ورود مدیریت</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-32 pb-section-gap px-container-margin md:px-12 max-w-7xl mx-auto w-full z-10 relative space-y-16">
+    
+    <!-- Header -->
+    <div class="text-center space-y-3 max-w-2xl mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-black text-on-background">سامانه پشتیبانی و ثبت تیکت MP STORE</h1>
+      <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed">
+        ارسال مستقیم تیکت به کارشناسان، پیگیری آنی وضعیت پاسخ‌ها، یا ارتباط مستقیم در تلگرام
+      </p>
+    </div>
+
+    <!-- Main Support Center Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Right Column: Direct Channels -->
+      <div class="lg:col-span-4 space-y-4">
+        
+        <!-- Telegram Bot Card (Highlighted) -->
+        <a href="https://t.me/Mpstore1388bot" target="_blank" class="glass-panel p-6 rounded-3xl border border-secondary/40 flex items-start gap-4 group hover:border-secondary transition-all block">
+          <div class="w-12 h-12 rounded-2xl bg-secondary/15 flex items-center justify-center text-secondary shrink-0 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">smart_toy</span>
+          </div>
+          <div class="space-y-1 flex-1">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-base text-on-surface">ربات رسمی تلگرام</h3>
+              <span class="text-xs text-secondary font-bold">پاسخ آنی</span>
+            </div>
+            <p class="text-xs text-on-surface-variant">سفارش‌گذاری خودکار و پشتیبانی سریع</p>
+            <div class="text-xs text-secondary font-mono pt-1">@Mpstore1388bot</div>
+          </div>
+        </a>
+
+        <!-- Support Telegram ID -->
+        <a href="https://t.me/Mpstore1388" target="_blank" class="glass-panel p-6 rounded-3xl border border-white/10 flex items-start gap-4 group hover:border-tertiary transition-all block">
+          <div class="w-12 h-12 rounded-2xl bg-tertiary/15 flex items-center justify-center text-tertiary shrink-0 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">send</span>
+          </div>
+          <div class="space-y-1 flex-1">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-base text-on-surface">کانال اطلاع‌رسانی</h3>
+              <span class="text-xs text-tertiary">اخبار و آپدیت‌ها</span>
+            </div>
+            <p class="text-xs text-on-surface-variant">عضویت در کانال رسمی محصولات</p>
+            <div class="text-xs text-tertiary font-mono pt-1">@Mpstore1388</div>
+          </div>
+        </a>
+
+        <!-- Working Hours & Direct Email -->
+        <div class="glass-panel p-6 rounded-3xl border border-white/10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-xl">schedule</span>
+            <div>
+              <div class="font-bold text-sm text-on-surface">پاسخگویی تیکت‌ها</div>
+              <div class="text-xs text-on-surface-variant">میانگین زمان پاسخ: کمتر از ۳۰ دقیقه</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 pt-2 border-t border-white/5">
+            <span class="material-symbols-outlined text-secondary text-xl">mail</span>
+            <div>
+              <div class="font-bold text-sm text-on-surface">ایمیل رسمی پشتیبانی</div>
+              <div class="text-xs text-on-surface-variant font-mono">support@mpstore.ir</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Left Column: Support Tickets & Tracking Tabs -->
+      <div class="lg:col-span-8 glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+        
+        <!-- Tab Switches: Send Ticket vs Track Ticket -->
+        <div class="flex p-1 rounded-2xl bg-surface-container-high border border-white/10">
+          <button id="tab-btn-create" onclick="switchSupportTab('create')" class="flex-1 py-3 rounded-xl font-bold text-sm bg-secondary text-surface-container-lowest transition-all flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-lg">edit_note</span>
+            <span>ثبت تیکت و پیام جدید</span>
+          </button>
+          <button id="tab-btn-track" onclick="switchSupportTab('track')" class="flex-1 py-3 rounded-xl font-bold text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-lg">search_check</span>
+            <span>پیگیری و مشاهده پاسخ تیکت</span>
+          </button>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- TAB 1: CREATE NEW TICKET FORM                 -->
+        <!-- ============================================== -->
+        <div id="tab-content-create" class="space-y-6">
+          <div class="space-y-1">
+            <h2 class="text-lg font-bold text-on-surface">فرم ارسال تیکت مستقیم به پشتیبان MP STORE</h2>
+            <p class="text-xs text-on-surface-variant">پس از ثبت، یک کد رهگیری اختصاصی دریافت خواهید کرد.</p>
+          </div>
+
+          <form onsubmit="handleCreateTicketSubmit(event)" class="space-y-4 text-xs sm:text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-on-surface-variant mb-1 font-medium">نام و نام خانوادگی:</label>
+                <input type="text" id="ticket-name" required placeholder="مثال: علی احمدی" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+              </div>
+              <div>
+                <label class="block text-on-surface-variant mb-1 font-medium">شماره تماس یا آیدی تلگرام:</label>
+                <input type="text" id="ticket-contact" required placeholder="@username یا 0912..." class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-on-surface-variant mb-1 font-medium">بخش مربوطه:</label>
+                <select id="ticket-department" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary">
+                  <option value="پشتیبانی فنی و دانلود">پشتیبانی فنی و دانلود فایل‌ها</option>
+                  <option value="مشاوره خرید و دوره‌ها">مشاوره خرید و دوره‌ها</option>
+                  <option value="پیگیری سفارش تلگرام">پیگیری سفارش تلگرام</option>
+                  <option value="حسابداری و مالی">حسابداری و مالی</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-on-surface-variant mb-1 font-medium">اولویت تیکت:</label>
+                <select id="ticket-priority" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary">
+                  <option value="عادی">عادی</option>
+                  <option value="فوری">فوری (پاسخ سریع‌تر)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-on-surface-variant mb-1 font-medium">موضوع تیکت:</label>
+              <input type="text" id="ticket-subject" required placeholder="مثال: سوال درباره لایسنس دستیار هوش مصنوعی" class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary" />
+            </div>
+
+            <div>
+              <label class="block text-on-surface-variant mb-1 font-medium">متن پیام شما:</label>
+              <textarea id="ticket-message" required rows="4" placeholder="پیام و شرح کامل سوال یا درخواست خود را اینجا بنویسید..." class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-2.5 px-3 text-on-surface text-sm focus:outline-none focus:border-secondary"></textarea>
+            </div>
+
+            <button type="submit" class="w-full btn-primary py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(39,148,244,0.4)]">
+              <span class="material-symbols-outlined">send</span>
+              <span>ثبت تیکت و دریافت کد رهگیری</span>
+            </button>
+          </form>
+
+          <!-- Ticket Success Card (Hidden by default) -->
+          <div id="ticket-success-box" class="hidden p-6 rounded-2xl bg-secondary/10 border border-secondary/40 space-y-4 text-center">
+            <div class="w-12 h-12 rounded-full bg-secondary/20 text-secondary flex items-center justify-center mx-auto">
+              <span class="material-symbols-outlined text-3xl">check_circle</span>
+            </div>
+            <div class="space-y-1">
+              <h3 class="font-bold text-base text-on-surface">تیکت شما با موفقیت ثبت شد!</h3>
+              <p class="text-xs text-on-surface-variant">کد پیگیری زیر را برای بررسی وضعیت و مشاهده پاسخ ذخیره فرمایید:</p>
+            </div>
+            
+            <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-xl bg-surface-container-high border border-secondary text-secondary font-mono font-bold text-lg">
+              <span id="ticket-success-code">MP-XXXX</span>
+              <button onclick="copyTrackingCode()" class="text-on-surface-variant hover:text-white" title="کپی کد">
+                <span class="material-symbols-outlined text-base">content_copy</span>
+              </button>
+            </div>
+
+            <div class="flex justify-center gap-3 pt-2">
+              <button onclick="viewTrackedTicketFromSuccess()" class="btn-secondary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                <span>مشاهده وضعیت این تیکت</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ============================================== -->
+        <!-- TAB 2: TRACK EXISTING TICKET & VIEW REPLIES   -->
+        <!-- ============================================== -->
+        <div id="tab-content-track" class="hidden space-y-6">
+          <div class="space-y-1">
+            <h2 class="text-lg font-bold text-on-surface">پیگیری وضعیت و مشاهده پاسخ تیکت</h2>
+            <p class="text-xs text-on-surface-variant">کد رهگیری (مانند MP-7841) یا آیدی تلگرام خود را وارد کنید.</p>
+          </div>
+
+          <!-- Tracking Search Bar -->
+          <form onsubmit="handleTrackTicketSearch(event)" class="flex gap-2">
+            <div class="relative flex-1">
+              <input 
+                type="text" 
+                id="track-input-code" 
+                required 
+                placeholder="مثال: MP-7841 یا @username" 
+                class="w-full bg-surface-container-high border border-outline-variant/30 rounded-xl py-3 pr-10 pl-4 text-sm text-on-surface uppercase focus:outline-none focus:border-secondary" 
+              />
+              <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+            </div>
+            <button type="submit" class="btn-primary px-6 py-3 rounded-xl font-bold text-sm shrink-0 flex items-center gap-1">
+              <span>جستجو</span>
+            </button>
+          </form>
+
+          <!-- Quick samples buttons -->
+          <div class="flex flex-wrap items-center gap-2 text-xs text-on-surface-variant">
+            <span>کدهای نمونه جهت تست:</span>
+            <button onclick="quickFillTrackCode('MP-7841')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-secondary/20 hover:text-secondary font-mono transition-colors">MP-7841 (پاسخ داده شده)</button>
+            <button onclick="quickFillTrackCode('MP-9214')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-tertiary/20 hover:text-tertiary font-mono transition-colors">MP-9214 (در انتظار)</button>
+          </div>
+
+          <!-- Track Result Container -->
+          <div id="track-result-container" class="hidden space-y-6 pt-4 border-t border-white/10">
+            <!-- Dynamically populated -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="space-y-6 pt-10 border-t border-white/10">
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-on-background">سوالات متداول درباره تیکت و پشتیبانی</h2>
+        <p class="text-on-surface-variant text-sm">پاسخ به سوالات پرتکرار کاربران</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        
+        <div class="glass-panel rounded-2xl overflow-hidden border border-white/10">
+          <button onclick="toggleFaq(this)" class="w-full p-5 text-right font-bold text-sm sm:text-base flex justify-between items-center text-on-surface hover:text-secondary transition-colors">
+            <span>مدت زمان پاسخگویی به تیکت‌ها چقدر است؟</span>
+            <span class="material-symbols-outlined text-secondary transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-on-surface-variant leading-relaxed border-t border-white/5 pt-3">
+            تیکت‌های اولویت فوری در کمتر از ۱۵ الی ۳۰ دقیقه و سایر تیکت‌ها حداکثر ظرف ۲ ساعت کاری توسط تیم پشتیبانی فنی پاسخ داده می‌شوند.
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-2xl overflow-hidden border border-white/10">
+          <button onclick="toggleFaq(this)" class="w-full p-5 text-right font-bold text-sm sm:text-base flex justify-between items-center text-on-surface hover:text-secondary transition-colors">
+            <span>آیا پاسخ تیکت در تلگرام هم ارسال می‌شود؟</span>
+            <span class="material-symbols-outlined text-secondary transition-transform duration-300">expand_more</span>
+          </button>
+          <div class="faq-content hidden px-5 pb-5 text-xs sm:text-sm text-on-surface-variant leading-relaxed border-t border-white/5 pt-3">
+            بله، چنانچه آیدی تلگرام خود را وارد کرده باشید، کارشناس ما علاوه بر ثبت پاسخ در سایت، پاسخ را از طریق ربات و پشتیبانی تلگرام نیز برای شما فوروارد خواهد کرد.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full rounded-t-3xl mt-section-gap border-t border-outline-variant/10 flex flex-col items-center py-16 px-container-margin bg-gradient-to-b from-transparent to-surface-container bg-surface-container-lowest text-secondary font-body-md z-10 relative">
+    <div class="flex flex-col items-center gap-6 mb-8 w-full max-w-5xl">
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE" class="w-10 h-10 rounded-full grayscale opacity-80" />
+        <span class="text-2xl font-black tracking-tight text-secondary">MP STORE</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full text-on-surface-variant text-sm">
+        <a href="contact.html" class="hover:text-tertiary transition-colors">تماس با ما</a>
+        <a href="contact.html#faq" class="hover:text-tertiary transition-colors">سوالات متداول</a>
+        <a href="about.html" class="hover:text-tertiary transition-colors">درباره ما</a>
+        <a href="contact.html" class="hover:text-tertiary transition-colors">شرایط و قوانین</a>
+        <a href="admin.html" class="hover:text-secondary transition-colors text-outline">ورود مدیریت</a>
+      </div>
+    </div>
+    <div class="text-center text-outline text-xs border-t border-white/5 pt-6 w-full max-w-5xl opacity-75">
+      © ۲۰۲۴ تمامی حقوق برای MP STORE محفوظ است. طراحی شده با عشق در دنیای دیجیتال.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/tickets-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    let currentCreatedTicketCode = '';
+
+    function switchSupportTab(tab) {
+      const btnCreate = document.getElementById('tab-btn-create');
+      const btnTrack = document.getElementById('tab-btn-track');
+      const contentCreate = document.getElementById('tab-content-create');
+      const contentTrack = document.getElementById('tab-content-track');
+
+      if (tab === 'create') {
+        btnCreate.className = 'flex-1 py-3 rounded-xl font-bold text-sm bg-secondary text-surface-container-lowest transition-all flex items-center justify-center gap-2';
+        btnTrack.className = 'flex-1 py-3 rounded-xl font-bold text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-2';
+        contentCreate.classList.remove('hidden');
+        contentTrack.classList.add('hidden');
+      } else {
+        btnTrack.className = 'flex-1 py-3 rounded-xl font-bold text-sm bg-secondary text-surface-container-lowest transition-all flex items-center justify-center gap-2';
+        btnCreate.className = 'flex-1 py-3 rounded-xl font-bold text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center gap-2';
+        contentTrack.classList.remove('hidden');
+        contentCreate.classList.add('hidden');
+      }
+    }
+
+    function handleCreateTicketSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('ticket-name').value;
+      const contact = document.getElementById('ticket-contact').value;
+      const department = document.getElementById('ticket-department').value;
+      const priority = document.getElementById('ticket-priority').value;
+      const subject = document.getElementById('ticket-subject').value;
+      const message = document.getElementById('ticket-message').value;
+
+      const newTicket = createNewTicket({
+        name,
+        contact,
+        department,
+        priority,
+        subject,
+        message
+      });
+
+      currentCreatedTicketCode = newTicket.trackingCode;
+      document.getElementById('ticket-success-code').textContent = newTicket.trackingCode;
+      document.getElementById('ticket-success-box').classList.remove('hidden');
+
+      showToast(`تیکت شما با کد ${newTicket.trackingCode} ثبت گردید.`);
+    }
+
+    function copyTrackingCode() {
+      if (!currentCreatedTicketCode) return;
+      navigator.clipboard.writeText(currentCreatedTicketCode).then(() => {
+        showToast('کد پیگیری در کلیپ‌بورد کپی شد.');
+      });
+    }
+
+    function viewTrackedTicketFromSuccess() {
+      switchSupportTab('track');
+      document.getElementById('track-input-code').value = currentCreatedTicketCode;
+      handleTrackTicketSearch(new Event('submit'));
+    }
+
+    function quickFillTrackCode(code) {
+      document.getElementById('track-input-code').value = code;
+      handleTrackTicketSearch(new Event('submit'));
+    }
+
+    function handleTrackTicketSearch(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const code = document.getElementById('track-input-code').value;
+      const container = document.getElementById('track-result-container');
+      
+      const ticket = getTicketByTrackingCode(code);
+
+      if (!ticket) {
+        container.innerHTML = `
+          <div class="p-6 rounded-2xl bg-surface-container-high border border-white/10 text-center space-y-2">
+            <span class="material-symbols-outlined text-3xl text-outline">search_off</span>
+            <p class="text-sm text-on-surface">تیکتی با کد یا مشخصات وارد شده یافت نشد.</p>
+            <p class="text-xs text-on-surface-variant">لطفا کد پیگیری (مانند MP-7841) را به درستی وارد فرمایید.</p>
+          </div>
+        `;
+        container.classList.remove('hidden');
+        return;
+      }
+
+      const statusMap = {
+        pending: { text: 'در انتظار پاسخ کارشناس', class: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
+        answered: { text: 'پاسخ داده شده', class: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
+        closed: { text: 'بسته شده', class: 'bg-outline-variant/30 text-outline border-white/10' }
+      };
+
+      const statusInfo = statusMap[ticket.status] || statusMap.pending;
+
+      let repliesHtml = '';
+      if (ticket.replies && ticket.replies.length > 0) {
+        repliesHtml = ticket.replies.map(r => `
+          <div class="p-4 sm:p-5 rounded-2xl bg-tertiary/10 border border-tertiary/30 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center font-bold text-xs">
+                  <span class="material-symbols-outlined text-sm">support_agent</span>
+                </span>
+                <span class="font-bold text-tertiary">${r.sender}</span>
+              </div>
+              <span class="text-on-surface-variant font-mono text-[11px]">${r.timestamp}</span>
+            </div>
+            <p class="text-xs sm:text-sm text-on-surface leading-relaxed pt-1 whitespace-pre-line">${r.message}</p>
+          </div>
+        `).join('');
+      } else {
+        repliesHtml = `
+          <div class="p-4 rounded-xl bg-surface-container border border-white/5 text-xs text-on-surface-variant flex items-center gap-2">
+            <span class="material-symbols-outlined text-base text-secondary animate-spin">sync</span>
+            <span>تیکت شما در صف بررسی کارشناسان پشتیبانی قرار دارد. به زودی پاسخ در همین بخش ثبت می‌شود.</span>
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <!-- Ticket Header Details -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 p-4 rounded-2xl bg-surface-container border border-white/10">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-lg border text-xs font-bold ${statusInfo.class}">${statusInfo.text}</span>
+                <span class="text-xs font-mono font-bold text-secondary">${ticket.trackingCode}</span>
+              </div>
+              <h3 class="text-base font-bold text-on-surface mt-1">${ticket.subject}</h3>
+            </div>
+            <div class="text-left sm:text-right text-xs text-on-surface-variant">
+              <div>بخش: <span class="text-on-surface font-medium">${ticket.department}</span></div>
+              <div class="font-mono text-[11px] text-outline mt-0.5">${ticket.createdAt}</div>
+            </div>
+          </div>
+
+          <!-- Original User Question -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-surface-container-high border border-white/10 space-y-2">
+            <div class="flex items-center justify-between text-xs text-on-surface-variant">
+              <span class="font-medium text-on-surface">متن ارسالی شما (${ticket.name}):</span>
+              <span class="font-mono text-[11px]">${ticket.createdAt}</span>
+            </div>
+            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed whitespace-pre-line">${ticket.message}</p>
+          </div>
+
+          <!-- Official Replies Thread -->
+          <div class="space-y-3 pt-2">
+            <h4 class="text-xs font-bold text-tertiary flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm">forum</span>
+              <span>پاسخ‌های رسمی پشتیبانی MP STORE</span>
+            </h4>
+            ${repliesHtml}
+          </div>
+
+          <!-- Action: Reply in Telegram -->
+          <div class="pt-3 flex justify-end">
+            <a href="https://t.me/Mpstore1388bot?start=ticket_${ticket.trackingCode}" target="_blank" class="btn-secondary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm">send</span>
+              <span>پیگیری مستقیم در ربات تلگرام</span>
+            </a>
+          </div>
+        </div>
+      `;
+
+      container.classList.remove('hidden');
+    }
+
+    function toggleFaq(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('.material-symbols-outlined');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  </script>
+</body>
+</html>

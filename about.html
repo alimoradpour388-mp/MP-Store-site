@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>درباره ما | MP STORE - نوآوری در اکوسیستم دیجیتال</title>
+  
+  <!-- Google Fonts: Vazirmatn & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Config -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary-container": "#959bff",
+            "surface-container-low": "#1b1b22",
+            "on-secondary": "#00325a",
+            "surface-container": "#1f1f27",
+            "outline-variant": "#464654",
+            "inverse-primary": "#494fca",
+            "on-tertiary-fixed": "#2e004d",
+            "on-background": "#e4e1ec",
+            "secondary-container": "#2794f4",
+            "tertiary": "#e1b6ff",
+            "surface-container-lowest": "#0d0e15",
+            "surface-container-high": "#292931",
+            "outline": "#908f9f",
+            "primary": "#bfc1ff",
+            "surface": "#13131a",
+            "secondary": "#a0c9ff",
+            "on-surface": "#e4e1ec",
+            "background": "#13131a",
+            "on-surface-variant": "#c6c5d6"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "2rem"
+          },
+          spacing: {
+            "section-gap": "80px",
+            "container-margin": "24px"
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen aurora-bg flex flex-col relative overflow-x-hidden bg-grid-pattern">
+
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-4 inset-x-4 z-50 max-w-7xl mx-auto">
+    <nav class="glass-nav rounded-full px-6 h-16 flex items-center justify-between transition-all">
+      <!-- Right/Brand -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant/30 flex items-center justify-center p-1 overflow-hidden shadow-[0_0_15px_rgba(39,148,244,0.3)] group-hover:scale-105 transition-transform">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <span class="font-bold text-xl md:text-2xl bg-gradient-to-l from-secondary via-primary to-tertiary bg-clip-text text-transparent tracking-tight">
+            MP STORE
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 font-medium text-base text-on-surface-variant">
+        <a href="index.html" class="hover:text-secondary transition-colors py-1">خانه</a>
+        <a href="products.html" class="hover:text-secondary transition-colors py-1">محصولات</a>
+        <a href="products.html?category=all" class="hover:text-secondary transition-colors py-1">دسته‌بندی‌ها</a>
+        <a href="about.html" class="text-tertiary font-bold border-b-2 border-tertiary pb-0.5 transition-colors">درباره ما</a>
+        <a href="contact.html" class="hover:text-secondary transition-colors py-1">تماس با ما</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSearchModal(true)" class="p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="جستجو">
+          <span class="material-symbols-outlined text-2xl">search</span>
+        </button>
+
+        <button onclick="toggleCartDrawer()" class="relative p-2 text-on-surface-variant hover:text-secondary hover:bg-white/5 rounded-full transition-colors" title="سبد خرید">
+          <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+          <span class="cart-count-badge hidden absolute top-0.5 right-0.5 w-4 h-4 bg-tertiary text-surface-container-lowest rounded-full text-[10px] font-bold flex items-center justify-center">۰</span>
+        </button>
+
+        <a href="https://t.me/Mpstore1388bot" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-container/20 text-secondary border border-secondary/40 hover:bg-secondary-container hover:text-white hover:border-transparent btn-glow-primary transition-all duration-300 text-sm font-semibold">
+          <span class="material-symbols-outlined text-lg">smart_toy</span>
+          <span>خرید از ربات تلگرام</span>
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-on-surface hover:bg-white/5 rounded-full" title="منو">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 md:hidden mt-2 p-4 glass-panel rounded-2xl flex flex-col gap-3 transition-all duration-300 border border-white/10 shadow-2xl">
+      <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">خانه</a>
+      <a href="products.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">محصولات</a>
+      <a href="about.html" class="px-4 py-2 rounded-lg bg-secondary/10 text-secondary font-bold">درباره ما</a>
+      <a href="contact.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-on-surface">تماس با ما</a>
+      <a href="admin.html" class="px-4 py-2 rounded-lg hover:bg-white/5 text-outline text-sm">ورود مدیریت</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-32 pb-section-gap px-container-margin md:px-12 max-w-7xl mx-auto w-full z-10 relative space-y-20">
+    
+    <!-- Hero / Story Section -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full glass-panel border border-secondary/30 text-secondary text-xs font-semibold">
+          داستان و چشم‌انداز MP STORE
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-on-background">
+          پیشگام در ارائه ابزارهای <span class="text-gradient">آینده و هوش مصنوعی</span>
+        </h1>
+        <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed">
+          فروشگاه MP STORE با هدف دسترسی آسان، سریع و بدون واسطه به پیشرفته‌ترین ابزارهای هوش مصنوعی، سورس‌کدهای مدرن و تجهیزات دیجیتال تأسیس شده است. ما بر این باوریم که فناوری باید در خدمت بهره‌وری و خلق ارزش برای هر فرد و کسب‌وکار باشد.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+          <a href="https://t.me/Mpstore1388bot" target="_blank" class="btn-primary px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined">send</span>
+            <span>ورود به ربات تلگرام MP STORE</span>
+          </a>
+          <a href="products.html" class="btn-secondary px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span>مشاهده ویترین محصولات</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="w-full max-w-md h-80 sm:h-96 glass-panel rounded-3xl p-4 border border-secondary/30 relative overflow-hidden flex items-center justify-center">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOqBUcY9-sMOkIjiSQSRhb8K05ROTe6CAznyMZKUhVHzFUm4VF445GDh2a-b5gdy-5ncaiENbMmBG7XzZIUuU3-JDO4h-2BMnAEyi2kouPsuyGPKuPINw1CJ9sg9DyPRAyxy5fSF626H_Z1JbjWb0dBmsSK73BcB-RPHKzrGx3yH_aU7poRAHmQSVhNV9onz7ZtKZZnUcYa_b8Jv2BCvERaUR8QyIfuji5fzzwcFxqjHhH0lGsbuji" 
+            alt="MP STORE Tech" 
+            class="w-full h-full object-contain rounded-2xl drop-shadow-2xl" 
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values Cards -->
+    <section class="space-y-8">
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-on-background">ارزش‌ها و اصول ما</h2>
+        <p class="text-on-surface-variant text-sm">چرا هزاران کاربر در سراسر ایران به MP STORE اعتماد دارند؟</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel p-8 rounded-3xl border border-secondary/30 space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-secondary/15 flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined text-3xl">bolt</span>
+          </div>
+          <h3 class="font-bold text-lg text-on-surface">سرعت در تحویل دیجیتال</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            هیچ انتظاری لازم نیست. به محض ثبت سفارش در ربات تلگرام، دسترسی و فایل‌های دانلودی در چند ثانیه به حساب شما ارسال می‌شوند.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-3xl border border-tertiary/30 space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-tertiary/15 flex items-center justify-center text-tertiary">
+            <span class="material-symbols-outlined text-3xl">verified_user</span>
+          </div>
+          <h3 class="font-bold text-lg text-on-surface">کیفیت و اصالت سنجیده شده</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            تمامی ابزارها، مدل‌ها و سورس‌کدها پیش از انتشار توسط مهندسین فنی ما به طور دقیق بازبینی و تست می‌گردند.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-3xl border border-primary/30 space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-3xl">headset_mic</span>
+          </div>
+          <h3 class="font-bold text-lg text-on-surface">پشتیبانی واقعی و پاسخگو</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            تیم پشتیبانی ما به صورت مستقیم در تلگرام در کنار شماست تا به سوالات، درخواست‌ها و نیازهای فنی شما پاسخ دهد.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="glass-panel rounded-3xl p-8 sm:p-12 border border-white/10 text-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="space-y-2">
+          <div class="text-3xl sm:text-4xl font-black text-secondary">۵,۰۰۰+</div>
+          <div class="text-xs sm:text-sm text-on-surface-variant">کاربر و خریدار فعال</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl sm:text-4xl font-black text-tertiary">۵۰+</div>
+          <div class="text-xs sm:text-sm text-on-surface-variant">محصول و ابزار برتر</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl sm:text-4xl font-black text-primary">۱۰۰٪</div>
+          <div class="text-xs sm:text-sm text-on-surface-variant">رضایت و تحویل آنی</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl sm:text-4xl font-black text-on-surface">۲۴/۷</div>
+          <div class="text-xs sm:text-sm text-on-surface-variant">پشتیبانی در تلگرام</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full rounded-t-3xl mt-section-gap border-t border-outline-variant/10 flex flex-col items-center py-16 px-container-margin bg-gradient-to-b from-transparent to-surface-container bg-surface-container-lowest text-secondary font-body-md z-10 relative">
+    <div class="flex flex-col items-center gap-6 mb-8 w-full max-w-5xl">
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5utdBGEQbLzKiL8AALE6JZXNS0Ku9iIwF6IcYeYEZadiZAQ7tSkt2tNkxOw2V5sk2Vsf0B18R_hXUvkv0Ip0-N2_9yEnQpUkZivuy7YkCPokK0e50XeCD3GAg1ZdhhQwKyXXea4g6viZIMiS5toyzjN0fHPKNm2HyP9ALKdZ7AxWK3V51wDJqJ3ONLdOsCHTCLIGe1EX3_2via4AcwDlDETTIl1vPoOB_H4U44jGX3A_wj_PlIdf" alt="MP STORE" class="w-10 h-10 rounded-full grayscale opacity-80" />
+        <span class="text-2xl font-black tracking-tight text-secondary">MP STORE</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full text-on-surface-variant text-sm">
+        <a href="contact.html" class="hover:text-tertiary transition-colors">تماس با ما</a>
+        <a href="contact.html#faq" class="hover:text-tertiary transition-colors">سوالات متداول</a>
+        <a href="about.html" class="hover:text-tertiary transition-colors">درباره ما</a>
+        <a href="contact.html" class="hover:text-tertiary transition-colors">شرایط و قوانین</a>
+        <a href="admin.html" class="hover:text-secondary transition-colors text-outline">ورود مدیریت</a>
+      </div>
+    </div>
+    <div class="text-center text-outline text-xs border-t border-white/5 pt-6 w-full max-w-5xl opacity-75">
+      © ۲۰۲۴ تمامی حقوق برای MP STORE محفوظ است. طراحی شده با عشق در دنیای دیجیتال.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
